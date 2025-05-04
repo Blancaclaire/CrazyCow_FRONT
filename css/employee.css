@@ -1,0 +1,193 @@
+/* FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    font-family: "Lato", sans-serif;
+    background-color: #52375b;
+}
+
+header {
+    display: flex;
+    height: 15vh;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    position: relative;
+    height: 8em;
+    left: 0.2%;
+    top: 4%;
+}
+
+header a {
+    display: flex;
+    position: relative;
+    height: 3em;
+    align-items: center;
+    justify-content: center;
+    top: 20%;
+    right: 1.5%;
+    padding: 1em;
+    font: inherit;
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+    border: solid 2px white;
+
+}
+
+header a:hover {
+    background-color: white;
+    color: black;
+}
+
+
+
+main {
+    display: flex;
+    justify-content: center;
+
+}
+
+.container-image {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.image {
+    width: 20em; /* o el tamaño que quieras */
+    height: 20em;
+    border-radius: 50%; /* redondea todos los bordes para hacer el círculo */
+    object-fit: cover; /* asegura que la imagen se recorte bien dentro del círculo */
+    border: 3px solid white; /* opcional: borde blanco para que resalte */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* sombra para darle profundidad */
+}
+
+
+.name {
+    display: flex;
+    height: 9vh;
+    position: absolute;
+    top: 55%;
+    font-size: 9vh;
+    color: white;
+    letter-spacing: 0.05em;
+}
+
+
+.container-buttons {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    top: 75%;
+    gap: 6em;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #52375b;
+    border-radius: 50px;
+}
+
+
+.buttons a {
+    border-radius: 50px;
+    font-size: 1em;
+    padding: 2%;
+    text-align: center;
+    border: solid 2px white;
+    text-decoration: none;
+    color: white;
+    padding: 1em;
+
+}
+
+
+.buttons a:hover {
+    background-color: white;
+    color: black;
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+@media (max-width: 768px) {
+    .logo {
+        height: 5em;
+        top: 8%;
+
+    }
+
+
+    .container-buttons {
+        flex-direction: column;
+        gap: 1em;
+        top: 65%;
+    }
+
+    .buttons a {
+        width: 100%;
+        padding: 1em;
+    }
+
+    .name {
+        font-size: 3em;
+        top: 55%;
+    }
+
+
+}
+
+
+@media (max-width: 390px) {
+
+    .image{
+        width: 12em; 
+        height: 12em;
+    }
+
+    .logo {
+        display: none;
+
+    }
+
+    header a {
+        display: none;
+        left: 2%;
+        top: 20%;
+        font-size: 0.8em;
+    }
+
+    .container-buttons {
+        flex-direction: column;
+        gap: 1em;
+        top: 55%;
+    }
+
+    .buttons a {
+        width: 100%;
+        padding: 1em;
+    }
+
+    .name {
+        font-size: 2em;
+        top: 45%;
+    }
+}

@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+body {
+    margin: 0;
+    color: white;
+}
+
+header {
+    margin-bottom: 10%;
+}
+
+.dark-rectangle {
+    width: 100%;
+    height: 5vh;
+    background-color: #52375b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.centered-text {
+    font-size: 1.2rem;
+    color: white;
+    font-family: 'Playfair', serif;
+    text-align: center;
+    margin: 0;
+}
+
+.login-register {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2%;
+}
+
+.modern-form {
+    width: 350px;
+    max-width: 100%;
+    padding: 24px;
+    background: #ffffff;
+    border: 2px solid #52375b;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+.form-title {
+    font-size: 3em;
+    font-weight: 600;
+    color: #52375b;
+    margin: 0 0 24px;
+    text-align: center;
+    letter-spacing: -0.01em;
+    font-family: 'Playfair', serif;
+}
+
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form-input {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    border: 2px solid #52375b;
+    border-radius: 10px;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+.form-input::placeholder {
+    color: #999;
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    width: 16px;
+    height: 16px;
+    color: #666;
+    pointer-events: none;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+
+.button-glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+.form-footer {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.login-link {
+    color: #666;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.login-link span {
+    color: #52375b;
+    font-weight: 500;
+}
+
+/* Hover & Focus States */
+.form-input:hover {
+    border-color: #cbd5e1;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #52375b;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(82, 55, 91, 0.1);
+}
+
+.password-toggle:hover {
+    color: #52375b;
+    transform: scale(1.1);
+}
+
+.submit-button:hover {
+    background: #f8f5f9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(82, 55, 91, 0.25),
+        0 2px 4px rgba(82, 55, 91, 0.15);
+}
+
+.submit-button:hover .button-glow {
+    transform: translateX(100%);
+}
+
+.login-link:hover {
+    color: #333;
+}
+
+.login-link:hover span {
+    color: #3c2943;
+}
+
+/* Active States */
+.submit-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.password-toggle:active {
+    transform: scale(0.9);
+}
+
+/* Validation States */
+.form-input:not(:placeholder-shown):valid {
+    border-color: #52375b;
+}
+
+.form-input:not(:placeholder-shown):valid~.input-icon {
+    color: #52375b;
+}
+
+/* Animation */
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-4px);
+    }
+
+    75% {
+        transform: translateX(4px);
+    }
+}
+
+.form-input:not(:placeholder-shown):invalid {
+    border-color: #ff6b6b;
+    animation: shake 0.2s ease-in-out;
+}
+
+.form-input:not(:placeholder-shown):invalid~.input-icon {
+    color: #ff6b6b;
+}
+
+
+.pay-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.rounded-banner {
+    width: 350px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #52375b;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-left,
+.text-right {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.text-left {
+    margin-right: 20px;
+}
+
+.text-right {
+    font-weight: bold;
+    color: white;
+}
+
+/* Contenedor para centrar */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Botón centrado */
+.center-button {
+    width: 400px;
+    max-width: 100%;
+    padding: 15px 30px;
+    font-size: 1.8rem;
+    font-family: 'Playfair', serif;
+    color: white;
+    background-color: #52375b;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.center-button:hover {
+    background-color: #3d2844;
+    transform: scale(1.1);
+}
+
+/* Contenedor centrado */
+.center-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    background-color: white; 
+}
+
+/* Botón estilizado */
+.back-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: white;
+    color: #52375b;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-family: 'Lato', sans-serif;
+    border-radius: 10px;
+    border: 2px solid #52375b;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #EDE6EF;
+    transform: scale(1.05); 
+}
+
+
+/* Estilo general del footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: white;
+    color: #52375b;
+    padding: 20px 40px;
+}
+
+/* Sección izquierda: Logo */
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 33%;
+}
+
+.footer-logo {
+    width: 150px;
+    /* Tamaño del logo */
+    height: auto;
+}
+
+/* Sección central: Botones */
+.footer-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33%;
+}
+
+.footer-button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px 0;
+    font-size: 1rem;
+    font-family: 'Lato';
+    color: #52375b;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    text-decoration: none;
+}
+
+.footer-button:hover {
+    color: #1a1a1a;
+    transform: scale(1.05);
+}
+
+/* Sección derecha: Redes sociales */
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 33%;
+}
+
+.social-link {
+    text-decoration: none;
+    margin: 10px 0;
+    color: #52375b;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-icon {
+    width: 30px;
+    height: auto;
+}
+
+
+/* Texto en la parte inferior del footer */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    padding: 0 40px;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.left-text {
+    text-align: left;
+    font-family: 'Lato', sans-serif;
+    color: black;
+    margin: 0;
+}
+
+.right-text {
+    text-align: right;
+    font-family: 'Lato', sans-serif;
+    color: black;
+    margin: 0;
+}
+
+  /* Media queries para hacer la página responsive */
+  @media (max-width: 992px) {
+
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-right {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .left-text,
+    .right-text {
+        text-align: center;
+    }
+}

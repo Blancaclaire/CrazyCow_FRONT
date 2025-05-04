@@ -1,0 +1,190 @@
+/* FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    font-family: "Lato", sans-serif;
+    background-color: #fff9e6;
+    background-color:#EDE6EF;
+}
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    height: 27vh;; 
+}
+
+header a{
+    text-decoration: none;
+    color: white;
+}
+
+.subtitle{
+    display: flex;
+    position: relative;
+    height: 3em;
+    top: 2%;
+    font: inherit;
+    color: #551e4a;
+    text-decoration: none;
+    font-size: 2em;
+    padding: 1%;
+    left: 1%;
+    font-family: "Playfair", serif;
+}
+
+.bt-back {
+    display: flex;
+    position: relative;
+    height: 3em;
+    align-items: center;
+    justify-content: center;
+    top: 10%;
+    right: 1.5%;
+    padding: 1em;
+    font: inherit;
+    color: #551e4a;
+    border: solid 2px #551e4a;
+    background-color: transparent;
+    text-decoration: none;
+    border-radius: 50px;
+
+}
+
+.bt-back:hover{
+    background-color: #551e4a;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.container-buttons {
+    
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: space-between;
+    gap: 4em;
+    height: 60vh;
+
+    
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    padding: 1em;
+    top: 30%;
+    right: 1.5%;
+    font: inherit;
+    color: white;
+    background-color: transparent;
+    border-radius: 50px;
+    
+}
+
+.buttons a {
+    font-size: 2.5em;
+    padding: 2%;
+    text-align: center;
+    border: solid 2px white;
+    text-decoration: none;
+    color: white;
+    padding: 1em;
+    width: 80vw;   
+    border-radius: 30px;
+    background-color:#551e4a ;
+    transition: all 0.3s ease-in-out;
+    
+}
+
+.buttons a:hover{
+    background-color: transparent;
+    color:#551e4a;
+    border: solid 2px #551e4a;
+
+}
+
+@media (max-width: 390px) {
+    
+    .subtitle {
+        order: 2; 
+        font-size: 1em;
+        left: 2%;
+        margin-right: 1.2em;
+        margin-top: 1.5rem;
+    }
+
+    .bt-back {
+        order: 1; 
+        margin-left: 1em;
+        font-size: 0.9em;
+    
+    }
+    .container-buttons {
+    
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        justify-content: space-between;
+        gap: 5em;
+        height: 10vh;
+    
+        
+    }
+    
+    .buttons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 3em;
+        padding: 1em;
+        top: 30%;
+        right: 1.5%;
+        font: inherit;
+        color: white;
+        background-color: transparent;
+        border-radius: 50px;
+        
+    }
+    
+    .buttons a {
+        font-size: 2em;
+        padding: 1.5%;
+        text-align: center;
+        border: solid 2px white;
+        text-decoration: none;
+        color: white;
+        padding: 1em;
+        width: 80vw;   
+        border-radius: 30px;
+        background-color:#551e4a ;
+        transition: all 0.3s ease-in-out;
+        
+    }
+    
+    .buttons a:hover{
+        background-color: transparent;
+        color:#551e4a;
+        border: solid 2px #551e4a;
+    
+    }
+}

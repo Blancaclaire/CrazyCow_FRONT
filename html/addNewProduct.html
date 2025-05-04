@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+    <link rel="stylesheet" href="./CSS/addNewProduct.css">
+    <script src="./JS/addNewProduct.js"></script>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="subtitle">BURGUERS </a>
+        <a href="./employee.html" class="bt-back">BACK </a>
+    </header>
+
+    <main>
+        <div class="title-page">
+            <p>ADD NEW PRODUCT</p>
+        </div>
+
+        <form class="modern-form">
+
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <input required placeholder="Name off the Product " class="form-input" type="Name">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <input required placeholder="Price " class="form-input" type="Name">
+
+                </div>
+
+            </div>
+
+            <!-- Ingredientes -->
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <input required placeholder="Add Ingredient " class="form-input" type="text" id="ingredient-input">
+                    <button type="button" class="add-button" id="add-ingredient">+</button>
+                </div>
+                <ul class="ingredient-list" id="ingredient-list"></ul> <!-- Lista dinamica de ingredientes -->
+            </div>
+
+            <!-- Subida de imagen -->
+            <div class="input-group">
+                <label for="product-image" class="image-label">Upload Product Image
+                    <img src="./CSS/IMAGENES/icono-descarga.png">
+                </label>
+
+                <input type="file" id="product-image"
+                    accept="image/*"><!-- Define el input que permite la seleccion de imagenes desde el sistema del usaurio -->
+                <!-- accept: limita la seleccion de archivos a solo imagenes -->
+                <div class="preview-container">
+                    <img id="image-preview" class="image-preview" src="" alt="Image Preview">
+                </div>
+            </div>
+
+
+            <div class="bt">GENERATE NEW PRODUCT</div>
+
+        </form>
+
+    </main>
+</body>
+
+</html>
