@@ -1,0 +1,238 @@
+/* FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    font-family: "Lato", sans-serif;
+    background-color: #fff9e6;
+    background-color:#EDE6EF;
+}
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+header a{
+    text-decoration: none;
+    color: white;
+}
+
+.subtitle{
+    display: flex;
+    position: relative;
+    font: inherit;
+    color: #551e4a;
+    text-decoration: none;
+    font-size: 3vh;
+    padding: 1%;
+    left: 1%;
+    top: 1vh;
+    font-family: "Playfair", serif;
+}
+
+.bt-back {
+    display: flex;
+    position: relative;
+    align-items: center;
+    text-align: center;   
+    right: 1.5%;
+    padding: 1em;
+    color: #551e4a;
+    border: solid 2px #551e4a;
+    background-color: transparent;
+    text-decoration: none;
+    border-radius: 50px;
+    height: 3em;
+    margin-top: 2vh;
+    font-size: 2vh;
+
+}
+
+.bt-back:hover{
+    background-color: #551e4a;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+/* TITLE-PAGE */
+.title-page{
+    text-align: center;
+    font-family: "Playfair",sans-serif;
+    font-size: 7vh;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    color: #551e4a;
+}
+
+.modern-form {
+    width: 70vw;
+    max-width: 100%;
+    padding: 24px;
+    background: #ffffff;
+    border: 2px solid #52375b;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 5vh;
+}
+
+
+
+.input-group {
+    margin-bottom: 16px;
+}
+
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+
+.form-input {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    border: 2px solid #52375b;
+    border-radius: 10px;
+    color: #333;
+    transition: all 0.2s ease;
+}
+
+
+.form-input::placeholder {
+    color: #999;
+}
+
+
+
+/* Hover & Focus States */
+.form-input:hover {
+    border-color: #cbd5e1;
+}
+
+
+.form-input:focus {
+    outline: none;
+    border-color: #52375b;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(82, 55, 91, 0.1);
+}
+
+
+
+.submit-button:hover {
+    background: #f8f5f9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(82, 55, 91, 0.25),
+        0 2px 4px rgba(82, 55, 91, 0.15);
+}
+
+.ingredient-list li {
+    background: #551e4a;
+    color: white;
+    padding: 5px 10px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-button {
+    background-color: #551e4a;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    width: 2.3em;
+    aspect-ratio: 1/1; /* mantiene la proporción 1:1 */
+    align-items: center;
+}
+
+.add-button:hover {
+    background-color: #6f2a65;
+}
+
+
+#product-image {
+    display: none; /* Ocultamos el input real */
+}
+
+.image-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+    color: #551e4a;
+}
+
+.image-label img {
+    width: 1.7em;
+    height: 1.7em;
+    object-fit: cover;
+    background: #551e4a;
+    border-radius: 6px;
+}
+
+.preview-container {
+    margin-top: 10px;
+}
+
+.image-preview {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    display: none; /* Oculta la vista previa hasta que haya imagen */
+}
+
+
+.bt {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    text-align: center;   
+    padding: 1em;
+    color: #551e4a;
+    border: solid 2px #551e4a;
+    background-color: transparent;
+    text-decoration: none;
+    border-radius: 50px;
+    height: 3em;
+    margin-top: 2vh;
+    font-size: 2vh;
+}
+
+.bt:hover{
+    background-color: #551e4a;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}

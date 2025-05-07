@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style type="text/css"></style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/signup.css">
+    <link rel="stylesheet" href="../css/styles-general.css">
+    <title>CrazyCow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../imagenes/fav-icon.png">
+    <link rel="icon" href="../imagenes/fav-icon.png">
+    
+    <script src="../js/script.js"></script>
+    <script src="../js/styles-general.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+        </div>
+        <nav class="nav-container">
+            <!-- Botón hamburguesa para móviles -->
+            <button class="nav-toggle" id="navToggle">
+                <span class="hamburger"></span>
+            </button>
+
+            <!-- Menú principal -->
+            <ul id="navMenu">
+                <li><a href="../html/index.html#restaurants" class="nav-button">Restaurants</a></li>
+                <li><a href="../html/products-menu.html" class="nav-button">Menu</a></li>
+                <li><a href="../html/work-with-us.html" class="nav-button">Work with us</a></li>
+                <li><a href="../imagenes/menu-CrazyCow.pdf" class="nav-button">Menu card</a></li>
+
+                <!-- Carrito de compras -->
+                <li class="cart-item">
+                    <a href="../html/shopping-cart.html" class="basket-button">
+                        <img src="../imagenes/shopping-bag-black.png" alt="basket" class="basket-icon">
+                        <span class="basket-count" id="basketCount">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="main-container">
+        <div class="image-box">
+            <img src="../imagenes/burguercayendo.png" alt="Descripción de la imagen">
+        </div>
+        <div class="login-register">
+            <form class="modern-form">
+                <div class="form-title">Login</div>
+
+                <div class="form-body">
+
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <svg fill="none" viewBox="0 0 24 24" class="input-icon">
+                                <path stroke-width="1.5" stroke="currentColor"
+                                    d="M3 8L10.8906 13.2604C11.5624 13.7083 12.4376 13.7083 13.1094 13.2604L21 8M5 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V17C3 18.1046 3.89543 19 5 19Z">
+                                </path>
+                            </svg>
+                            <input required placeholder="Email" class="form-input" type="email">
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <svg fill="none" viewBox="0 0 24 24" class="input-icon">
+                                <path stroke-width="1.5" stroke="currentColor"
+                                    d="M12 10V14M8 6H16C17.1046 6 18 6.89543 18 8V16C18 17.1046 17.1046 18 16 18H8C6.89543 18 6 17.1046 6 16V8C6 6.89543 6.89543 6 8 6Z">
+                                </path>
+                            </svg>
+                            <input required placeholder="Password" class="form-input" type="password">
+                            <button class="password-toggle" type="button">
+                                <svg fill="none" viewBox="0 0 24 24" class="eye-icon">
+                                    <path stroke-width="1.5" stroke="currentColor"
+                                        d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z">
+                                    </path>
+                                    <circle stroke-width="1.5" stroke="currentColor" r="3" cy="12" cx="12"></circle>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="submit-button" type="submit">
+                    <span class="button-text">Login</span>
+                    <div class="button-glow"></div>
+                </button>
+
+                <div class="form-footer">
+                    <a class="login-link" href="../html/signup.html">
+                        Create a new account <span><b>Sign up</b></span>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="center-container">
+        <a href="../html/index.html" class="back-button">Back Home Page</a>
+    </div>
+
+    <footer class="footer">
+
+        <div class="footer-left">
+            <img src="../imagenes/logo2oscuro.png" alt="Logo" class="footer-logo">
+        </div>
+
+
+        <div class="footer-center">
+            <a href="../html/index.html" class="footer-button">Home</a>
+            <a href="../html/index.html#aboutus" class="footer-button">About Us</a>
+            <a href="../html/signup.html" class="footer-button">Sign up</a>
+            <a href="../html/login.html" class="footer-button">Login</a>
+            <a href="../html/control-panel.html" class="footer-button">Employee area</a>
+        </div>
+
+
+        <div class="footer-right">
+            <a href="https://www.facebook.com" target="_blank" class="social-link">
+                <img src="../imagenes/facebook.png" alt="Facebook" class="social-icon">
+            </a>
+            <a href="https://www.twitter.com" target="_blank" class="social-link">
+                <img src="../imagenes/whatsapp.png" alt="Twitter" class="social-icon">
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="social-link">
+                <img src="../imagenes/instagram.png" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" class="social-link">
+                <img src="../imagenes/tik-tok.png" alt="LinkedIn" class="social-icon">
+            </a>
+        </div>
+
+    </footer>
+    <footer>
+        <div class="footer-bottom">
+            <p class="left-text">© 2025 CrazyCow. All Rights Reserved.</p>
+            <p class="right-text">Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

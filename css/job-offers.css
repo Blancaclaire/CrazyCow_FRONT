@@ -1,0 +1,82 @@
+
+
+/* Contenedor principal */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Título central */
+.central-title {
+    font-size: 2.5rem;
+    margin: 20px 0;
+    color: #52375b;
+    font-family: 'Playfair', serif;
+}
+
+/* Estilo de los rectángulos */
+.rectangle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border: 2px solid #52375b;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenido de los rectángulos */
+.content {
+    text-align: left;
+    flex: 1;
+}
+
+.text {
+    margin: 10px 0;
+    color: gray;
+    font-size: 1.1rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.text2 {
+    margin: 10px 0;
+    color: black;
+    font-size: 1.1rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.text3 {
+    margin: 10px 0;
+    color: #52375b;
+    font-size: 1.1rem;
+    font-family: 'Lato', sans-serif;
+
+}
+
+
+/* Botón */
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: #52375b;
+    border: 2px solid #52375b;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #52375b;
+    color: white;
+    transform: scale(1.05);
+}
+

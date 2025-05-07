@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style type="text/css"></style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/payment.css">
+    <link rel="stylesheet" href="../css/styles-general.css">
+    <title>CrazyCow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../imagenes/fav-icon.png">
+    <link rel="icon" href="../imagenes/fav-icon.png">
+   
+    <script src="payment-script.js"></script>
+</head>
+
+<body>
+
+    <header class="dark-rectangle">
+        <div class="centered-text">
+            <h1>FORM OF PAYMENT</h1>
+        </div>
+    </header>
+
+    <div class="login-register">
+        <form class="modern-form">
+            <div class="form-title">CREDIT CARD</div>
+
+            <div class="form-body">
+
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input required placeholder="Name on the card *" class="form-input" type="Name">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input required placeholder="Number on the card *" class="form-input" type="Number">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input required placeholder="Expiry date *" class="form-input" type="Date">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input required placeholder="CVV *" class="form-input" type="CVV">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="pay-button">
+        <div class="rounded-banner">
+            <div class="text-left">
+                TOTAL
+            </div>
+            <div class="text-right" id="dynamic-text">
+                Cargando...
+            </div>
+        </div>
+    </div>
+
+    <div class="center-container">
+        <button class="center-button">PAY</button>
+    </div>
+
+    <div class="center-container">
+        <a href="../html/index.html" class="back-button">Back Home Page</a>
+    </div>
+
+    <footer class="footer">
+
+        <div class="footer-left">
+            <img src="../imagenes/logo2oscuro.png" alt="Logo" class="footer-logo">
+        </div>
+
+
+        <div class="footer-center">
+            <a href="../html/index.html" class="footer-button">Home</a>
+            <a href="../html/index.html#aboutus" class="footer-button">About Us</a>
+            <a href="../html/signup.html" class="footer-button">Sign up</a>
+            <a href="../html/login.html" class="footer-button">Login</a>
+            <a href="../html/control-panel.html" class="footer-button">Employee area</a>
+        </div>
+
+
+        <div class="footer-right">
+            <a href="https://www.facebook.com" target="_blank" class="social-link">
+                <img src="../imagenes/facebook.png" alt="Facebook" class="social-icon">
+            </a>
+            <a href="https://www.twitter.com" target="_blank" class="social-link">
+                <img src="../imagenes/whatsapp.png" alt="Twitter" class="social-icon">
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="social-link">
+                <img src="../imagenes/instagram.png" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://www.linkedin.com" target="_blank" class="social-link">
+                <img src="../imagenes/tik-tok.png" alt="LinkedIn" class="social-icon">
+            </a>
+        </div>
+
+    </footer>
+    <footer>
+        <div class="footer-bottom">
+            <p class="left-text">© 2025 CrazyCow. All Rights Reserved.</p>
+            <p class="right-text">Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+</body>
+
+</html>
