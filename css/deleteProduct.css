@@ -21,7 +21,7 @@ body {
 
 header{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     height: 10%;
 
 }
@@ -57,7 +57,8 @@ header a{
     border-radius: 50px;
     height: 3em;
     margin-top: 2vh;
-
+    font-size: smaller;
+    margin-bottom: 2vh;
 }
 
 .bt-back:hover{
@@ -70,7 +71,7 @@ header a{
 .title-page{
     text-align: center;
     font-family: "Playfair",sans-serif;
-    font-size: 3vh;
+    font-size: 4.5vh;
     margin-bottom: 3%;
     margin-top: 2%;
     color: #551e4a;
@@ -301,6 +302,17 @@ header a{
         margin-left: 1em;
         font-size: 0.9em;
     
+    }
+
+    .container-buttons{
+        margin-top: 3vh;
+    }
+
+    .title-page {
+        width: 70%;
+        font-size: 3.5vh;
+        margin-top: 2%;
+        margin: 0 auto;
     }
 
 }
