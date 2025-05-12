@@ -222,7 +222,7 @@ main {
 
 .content {
     font-size: 1.5em;
-    color: #4b004b;
+    color: #52375b;
     line-height: 1em;
     width: 70%;
     margin: 0 auto 1rem auto;
@@ -230,7 +230,7 @@ main {
 
 .job-button {
     display: inline-block;
-    background-color: #4b004b;
+    background-color: #52375b;
     color: #ffffff;
     padding: 1rem 2rem;
     text-decoration: none;

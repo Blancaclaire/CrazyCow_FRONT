@@ -184,6 +184,22 @@ body {
     font-weight: bold;
 }
 
+/* Configuración ultra simple para product-grid - productos uno al lado del otro */
+.product-grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+}
+
+.suggested-product-card {
+    flex: 1;
+    min-width: 0; /* Permite que las tarjetas se compriman si es necesario */
+    border: 1px solid #eee;
+    padding: 10px;
+    margin: 0;
+}
 
 .add-to-cart {
     display: inline-block;
@@ -205,13 +221,11 @@ body {
     border: 2px solid #52375b;
 }
 
-
 .suggested-product-image {
     width: 20px;
     height: 20px;
     margin-right: 5px;
 }
-
 /* Custom Menu Display */
 .menu-card {
     background-color: white;

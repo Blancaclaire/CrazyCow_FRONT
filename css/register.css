@@ -1,0 +1,128 @@
+/* Google Fonts Imports */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+/* ====================== */
+/* GLOBAL STYLES         */
+/* ====================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  background-color: #e5dbe9;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #52375b;
+    margin-bottom: 30px;
+    font-family: 'Playfair', serif;
+}
+
+.job-title {
+    background-color: #52375b;
+    font-family: 'Luckiest Guy', cursive;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-family: 'Lato', sans-serif;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+textarea,
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.required-field::after {
+    content: " *";
+    color: #52375b;
+}
+
+.btn-submit {
+    background-color: white;
+    color: #52375b;
+    border: 2px solid #52375b;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #52375b;
+    color: white;
+}
+
+.form-note {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+.two-columns {
+    display: flex;
+    gap: 15px;
+}
+
+.two-columns .form-group {
+    flex: 1;
+}
+
+.success-message {
+    background-color: #e5dbe9;
+    color: #52375b;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .two-columns {
+        flex-direction: column;
+        gap: 0;
+    }
+}
