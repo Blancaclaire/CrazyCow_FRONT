@@ -1,43 +1,149 @@
-window.addEventListener('DOMContentLoaded', function() {
-    getListProducts('burgers');
+document.addEventListener('DOMContentLoaded', function() {
+    // Load products on startup
+    getListProducts();
+    
+    // Remove tab switching functionality since we're showing all content at once
+    // The tab buttons have been removed from the HTML
+
+    // Set up close functionality for product detail modal
+    document.getElementById('closeDetail').addEventListener('click', function() {
+        document.getElementById('productDetail').classList.remove('active');
+    });
+    
+    // Close detail when clicking outside the content
+    document.getElementById('productDetail').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+        }
+    });
 });
 
-getListProducts = async ($type) => {
-    const url=`http://localhost:3000/${$type}` // Se iguala la URL de la API a una constante para que nos e repita el codigo
-
-    //fetch(url) hace la peticion a la API
-    //await espera a que la promesa se resuelva antes de continuar con el siguiente paso
-    const response = await fetch(url); 
-   
-    console.log('Api results are',response);
-
-    //La API respone con texto en formato JSON. Esto lo convierte en un objeto JavaScript para poder usarlo.
-    const data = await response.json();
-    console.log(data);
-
-    printProducts(data);
-};
-
-printProducts = (data) => {
-    let burgerGrid = document.querySelector('.burguers-grid');
-
-    burgerGrid.innerHTML = ''; //Clean the buffer
-    
-    data.forEach(item => {
-        const div = document.createElement('div');
-        div.classList.add('burger');
-        div.id = item.id;
-
-
-        //Rellenamos el div de la hamburguesa
-        div.innerHTML = `
-        <a href="#=${item.id}">  
-            <img src="${item.image}" alt="${item.name}">
-            <div class="title">${item.name || ''}</div>
-        </a>`;
-
-        // añadir enlaces a las paginas
+// Function to get products from the API
+async function getListProducts() {
+    try {
+        // Show loading indicator in all grids
+        document.querySelectorAll('.products-grid').forEach(grid => {
+            grid.innerHTML = '<div class="loading">Loading products...</div>';
+        });
         
-        burgerGrid.appendChild(div); //Añade el contenido definitivamente
+        const response = await fetch('http://localhost:8080/CrazyCow_Server/Controller?ACTION=PRODUCT.FIND_ALL');
+        const data = await response.json();
+        
+        // Display products in their respective categories
+        displayProductsByCategory(data);
+    } catch (error) {
+        console.error('Error loading products:', error);
+        document.querySelectorAll('.products-grid').forEach(grid => {
+            grid.innerHTML = '<div class="error">Error loading products. Please try again later.</div>';
+        });
+    }
+}
+
+// Display products organized by category
+function displayProductsByCategory(products) {
+    // Clear all grids first
+    document.querySelectorAll('.products-grid').forEach(grid => {
+        grid.innerHTML = '';
     });
-};
+    
+    // Check if there are products
+    if (!products || products.length === 0) {
+        document.querySelectorAll('.products-grid').forEach(grid => {
+            grid.innerHTML = '<div class="no-products">No products available</div>';
+        });
+        return;
+    }
+    
+    // Group products by category
+products.forEach(product => {
+    let targetGrid;
+    
+    // Determine which grid the product belongs to based on category_id
+    if (product.category_id === 1000) {
+        targetGrid = 'burgersGrid';
+    } else if (product.category_id === 1001) {
+        targetGrid = 'bittingsGrid';
+    } else if (product.category_id === 1002) {
+        targetGrid = 'drinksGrid';
+    } else if (product.category_id === 1003) {
+        targetGrid = 'dessertsGrid';
+    } else {
+        // Default fallback (optional)
+        targetGrid = 'bittingsGrid'; // or any other default you prefer
+    }
+    
+    // Create and add the product element to the appropriate grid
+    createProductElement(product, targetGrid);
+});
+}
+
+// Create product element and add it to the corresponding grid
+function createProductElement(product, gridId) {
+    const grid = document.getElementById(gridId);
+    
+    // If the grid doesn't exist, exit
+    if (!grid) return;
+    
+    const productElement = document.createElement('div');
+    productElement.className = 'product-item';
+    productElement.innerHTML = `
+        <a href="#" data-product-id="${product.id}">
+            <img src="../imagenes/${product.image}" alt="${product.product_name}" onerror="this.src='../imagenes/placeholder.png'">
+            <div class="product-info">
+                <h3>${product.product_name}</h3>
+                <p class="price">$${parseFloat(product.price).toFixed(2)}</p>
+            </div>
+        </a>
+    `;
+    
+    // Add click event to show details
+    productElement.querySelector('a').addEventListener('click', function(e) {
+        e.preventDefault();
+        showProductDetails(product);
+    });
+    
+    grid.appendChild(productElement);
+}
+
+// Show product details in modal
+function showProductDetails(product) {
+    const detailTitle = document.getElementById('detailTitle');
+    const detailBody = document.getElementById('detailBody');
+    
+    // Set the title
+    detailTitle.textContent = product.product_name;
+    
+    // Create the detail content
+    detailBody.innerHTML = `
+        <div class="detail-image">
+            <img src="../imagenes/${product.image}" alt="${product.product_name}" 
+                 onerror="this.src='../imagenes/placeholder.png'" 
+                 style="max-width: 100%; border-radius: 10px;">
+        </div>
+        <div class="detail-info" style="margin-top: 1rem;">
+            <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">Price: <strong style="color: #663399;">$${parseFloat(product.price).toFixed(2)}</strong></p>
+            <p style="margin-bottom: 1rem;">${product.description || 'No description available for this product.'}</p>
+            <button class="add-to-cart" 
+                    style="background-color: #9b8bb4; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: bold;">
+                Add to cart
+            </button>
+        </div>
+    `;
+    
+    // Show the modal
+    document.getElementById('productDetail').classList.add('active');
+}
+
+// Optional: Add to cart functionality
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('add-to-cart')) {
+        // Handle adding product to cart
+        const message = document.getElementById('addToCartMessage');
+        message.classList.add('show');
+        
+        // Hide message after 3 seconds
+        setTimeout(function() {
+            message.classList.remove('show');
+        }, 3000);
+    }
+});

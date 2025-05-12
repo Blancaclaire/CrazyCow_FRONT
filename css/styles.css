@@ -425,11 +425,13 @@ body {
   border-radius: 15px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
 }
 
 .action-button:hover {
-  background-color: #333;
+  background-color: #EDE6EF;
   transform: scale(1.1);
+  color: #52375b;
 }
 
 .right-side {
