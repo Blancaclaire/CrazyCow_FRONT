@@ -27,6 +27,8 @@ getListProducts = async ($type) => {
 
 printProducts = (data) => {
     let burgerGrid = document.querySelector('.burguers-grid');
+    const baseIMG = '../imagenes/';
+
 
     burgerGrid.innerHTML = ''; //Clean the buffer
     
@@ -34,17 +36,20 @@ printProducts = (data) => {
         const div = document.createElement('div');
         div.classList.add('burger');
         div.id = item.id;
-
+        
+        const imageSrc = `${baseIMG}${item.image}`
 
         //Rellenamos el div de la hamburguesa
         div.innerHTML = `
         <a href="#=${item.id}">  
-            <img src="${item.image}" alt="${item.name}">
+            <img src="${imageSrc}" alt="${item.product_name}">
             <div class="title">${item.product_name || ''}</div>
         </a>`;
 
         // añadir enlaces a las paginas
         
         burgerGrid.appendChild(div); //Añade el contenido definitivamente
+        console.log(imageSrc);
+
     });
 };
