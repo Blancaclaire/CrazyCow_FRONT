@@ -24,7 +24,7 @@ Para visualizar y ejecutar el proyecto localmente:
 Clonar el repositorio:
 
 bash
-git clone <URL_DEL_REPOSITORIO>
+git clone <[URL_DEL_REPOSITORIO](https://github.com/Blancaclaire/CrazyCow_FRONT.git)>
 Abrir el archivo index.html en el navegador.
 
 Contribuciones 📝
