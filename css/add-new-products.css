@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -14,27 +13,24 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Lato", sans-serif;
-    background-color: #fff9e6;
-    background-color:#EDE6EF;
+    background-color: #EDE6EF;
 }
 
-
-header{
+header {
     display: flex;
     justify-content: space-between;
-    
 }
 
-header a{
+header a {
     text-decoration: none;
     color: white;
 }
 
-.subtitle{
+.subtitle {
     display: flex;
     position: relative;
     font: inherit;
-    color: #551e4a;
+    color: #52375b;
     text-decoration: none;
     font-size: 3vh;
     padding: 1%;
@@ -50,31 +46,30 @@ header a{
     text-align: center;   
     right: 1.5%;
     padding: 1em;
-    color: #551e4a;
-    border: solid 2px #551e4a;
+    color: #52375b;
+    border: solid 2px #52375b;
     background-color: transparent;
     text-decoration: none;
     border-radius: 50px;
     height: 3em;
     margin-top: 2vh;
     font-size: 2vh;
-
 }
 
-.bt-back:hover{
-    background-color: #551e4a;
+.bt-back:hover {
+    background-color: #52375b;
     color: white;
     transition: all 0.3s ease-in-out;
 }
 
 /* TITLE-PAGE */
-.title-page{
+.title-page {
     text-align: center;
     font-family: "Playfair",sans-serif;
     font-size: 7vh;
     margin-bottom: 1em;
     margin-top: 1em;
-    color: #551e4a;
+    color: #52375b;
 }
 
 .modern-form {
@@ -93,19 +88,15 @@ header a{
     margin-bottom: 5vh;
 }
 
-
-
 .input-group {
     margin-bottom: 16px;
 }
-
 
 .input-wrapper {
     position: relative;
     display: flex;
     align-items: center;
 }
-
 
 .form-input {
     width: 100%;
@@ -116,20 +107,17 @@ header a{
     border-radius: 10px;
     color: #333;
     transition: all 0.2s ease;
+    padding: 0 10px;
 }
-
 
 .form-input::placeholder {
     color: #999;
 }
 
-
-
 /* Hover & Focus States */
 .form-input:hover {
     border-color: #cbd5e1;
 }
-
 
 .form-input:focus {
     outline: none;
@@ -138,20 +126,46 @@ header a{
     box-shadow: 0 0 0 4px rgba(82, 55, 91, 0.1);
 }
 
+.form-textarea {
+    width: 100%;
+    height: 100px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    border: 2px solid #52375b;
+    border-radius: 10px;
+    color: #333;
+    transition: all 0.2s ease;
+    padding: 10px;
+    resize: vertical;
+}
 
+.category-select {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    border: 2px solid #52375b;
+    border-radius: 10px;
+    color: #333;
+    padding: 0 10px;
+    background-color: white;
+}
 
-.submit-button:hover {
-    background: #f8f5f9;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(82, 55, 91, 0.25),
-        0 2px 4px rgba(82, 55, 91, 0.15);
+.ingredients-container {
+    margin-top: 15px;
+}
+
+.ingredient-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
 }
 
 .ingredient-list li {
-    background: #551e4a;
+    background: #52375b;
     color: white;
     padding: 5px 10px;
-    margin-top: 15px;
+    margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 5px;
     font-size: 14px;
@@ -160,8 +174,16 @@ header a{
     align-items: center;
 }
 
+.delete-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
 .add-button {
-    background-color: #551e4a;
+    background-color: #52375b;
     color: white;
     border: none;
     font-size: 16px;
@@ -171,17 +193,16 @@ header a{
     border-radius: 50%;
     justify-content: center;
     width: 2.3em;
-    aspect-ratio: 1/1; /* mantiene la proporción 1:1 */
+    aspect-ratio: 1/1;
     align-items: center;
 }
 
 .add-button:hover {
-    background-color: #6f2a65;
+    background-color: #52375b;
 }
 
-
 #product-image {
-    display: none; /* Ocultamos el input real */
+    display: none;
 }
 
 .image-label {
@@ -189,15 +210,15 @@ header a{
     display: flex;
     align-items: center;
     gap: 2vw;
-    color: #551e4a;
+    color: #52375b;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
 }
 
-.image-label img {
-    width: 1.7em;
-    height: 1.7em;
-    object-fit: cover;
-    background: #551e4a;
-    border-radius: 6px;
+.upload-icon {
+    width: 24px;
+    height: 24px;
+    color: #52375b;
 }
 
 .preview-container {
@@ -210,9 +231,8 @@ header a{
     object-fit: cover;
     border-radius: 10px;
     border: 2px solid #ccc;
-    display: none; /* Oculta la vista previa hasta que haya imagen */
+    display: none;
 }
-
 
 .bt {
     display: flex;
@@ -221,18 +241,55 @@ header a{
     align-items: center;
     text-align: center;   
     padding: 1em;
-    color: #551e4a;
-    border: solid 2px #551e4a;
+    color: #52375b;
+    border: solid 2px #52375b;
     background-color: transparent;
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 15px;
     height: 3em;
     margin-top: 2vh;
     font-size: 2vh;
+    cursor: pointer;
+    width: 100%;
 }
 
-.bt:hover{
-    background-color: #551e4a;
+.bt:hover {
+    background-color: #52375b;
     color: white;
     transition: all 0.3s ease-in-out;
 }
+
+.success-message {
+    display: none;
+    background-color: #d4edda;
+    color: #52375b;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px auto;
+    width: 70vw;
+    max-width: 100%;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+}
+
+.error-message {
+    display: none;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px auto;
+    width: 70vw;
+    max-width: 100%;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+}
+
+
+
+
+
+
+
+
+

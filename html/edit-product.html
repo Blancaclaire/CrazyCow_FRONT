@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Product</title>
+    <title>Edit Product</title>
     <link rel="stylesheet" href="../css/edit-product.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,13 +13,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../imagenes/fav-icon.png">
     <link rel="icon" href="../imagenes/fav-icon.png">
-    <script src="../js/add-new-products.js"></script>
+    <script src="../js/edit-product.js"></script>
 </head>
 
 <body>
     <header>
-        <a href="#" class="subtitle"> </a>
-        <a href="../html/control-panel.html" class="bt-back">BACK </a>
+        <a href="#" class="subtitle"></a>
+        <a href="../html/control-panel.html" class="bt-back">BACK</a>
     </header>
 
     <main>
@@ -27,50 +27,78 @@
             <p>EDIT PRODUCT</p>
         </div>
 
-        <form class="modern-form">
+        <div class="success-message" id="success-message">
+            Product updated successfully!
+        </div>
+        
+        <div class="error-message" id="error-message">
+            Error: Could not update product.
+        </div>
 
+        <form id="edit-form" class="modern-form">
             <div class="input-group">
                 <div class="input-wrapper">
-                    <input required placeholder="Name off the Product " class="form-input" type="Name">
+                    <select id="category-select" name="category_id" class="category-select" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="1000">Burgers</option>
+                        <option value="1001">Forbitting</option>
+                        <option value="1002">Drinks</option>
+                        <option value="1003">Desserts</option>
+                    </select>
                 </div>
             </div>
 
             <div class="input-group">
                 <div class="input-wrapper">
-                    <input required placeholder="Price " class="form-input" type="Name">
-
+                    <select id="product-select" name="product_id" class="category-select" required disabled>
+                        <option value="" disabled selected>Select a product</option>
+                    </select>
                 </div>
-
             </div>
 
-            <!-- Ingredientes -->
             <div class="input-group">
                 <div class="input-wrapper">
-                    <input required placeholder="Add Ingredient " class="form-input" type="text" id="ingredient-input">
-                    <button type="button" class="add-button" id="add-ingredient">+</button>
+                    <input id="product-name" name="product_name" required placeholder="Product Name" class="form-input" type="text">
                 </div>
-                <ul class="ingredient-list" id="ingredient-list"></ul> <!-- Lista dinamica de ingredientes -->
             </div>
 
-            <!-- Subida de imagen -->
             <div class="input-group">
-                <label for="product-image" class="image-label">Upload Product Image
-                    <img src="../imagenes/icono-descarga.png" alt="Upload Icon" class="upload-icon">
+                <div class="input-wrapper">
+                    <input id="product-price" name="price" required placeholder="Price" class="form-input" type="number" step="0.01">
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <textarea id="product-description" name="description" required placeholder="Product Description" class="form-textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="input-group ingredients-container">
+                <div class="input-wrapper">
+                    <input id="ingredient-input" placeholder="Add ingredient" class="form-input" type="text">
+                    <button type="button" id="add-ingredient" class="add-button">+</button>
+                </div>
+                <ul id="ingredient-list" class="ingredient-list"></ul>
+            </div>
+
+            <div class="input-group">
+                <label for="product-image" class="image-label">
+                    Update Product Image
+                    <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
                 </label>
-
-                <input type="file" id="product-image"
-                    accept="image/*"><!-- Define el input que permite la seleccion de imagenes desde el sistema del usaurio -->
-                <!-- accept: limita la seleccion de archivos a solo imagenes -->
+                <input type="file" id="product-image" name="image" accept="image/*">
                 <div class="preview-container">
                     <img id="image-preview" class="image-preview" src="" alt="Image Preview">
                 </div>
             </div>
 
-
-            <div class="bt">EDIT PRODUCT</div>
-
+            <button type="submit" class="bt">UPDATE PRODUCT</button>
         </form>
-
     </main>
 </body>
 

@@ -9,9 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Manejar el envío del formulario
     const form = document.getElementById('jobApplicationForm');
     const successMessage = document.getElementById('successMessage');
+    successMessage.style.display = 'none'; // Ocultar mensaje inicialmente
 
     // Configurar el evento click del botón
-    document.getElementById('submitBtn').addEventListener('click', function (e) {
+    document.getElementById('submitBtn').addEventListener('click', async function (e) {
         e.preventDefault();
 
         // Validar el formulario
@@ -32,56 +33,80 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Leer los datos del formulario
-        const jobId = document.getElementById('job_id').value;
-        const name = document.getElementById('name').value;
-        const surname = document.getElementById('surname').value;
-        const email = document.getElementById('email').value;
-        const phoneNumber = document.getElementById('phone_number').value;
-        const address = document.getElementById('address').value;
-        const applicationDate = document.getElementById('application_date').value;
+        // Mostrar indicador de carga
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
 
-        // Obtener el archivo del CV (solo información básica ya que localStorage no almacena archivos)
-        const resumeFile = document.getElementById('resume').files[0];
-        const resumeInfo = resumeFile ? {
-            name: resumeFile.name,
-            type: resumeFile.type,
-            size: resumeFile.size
-        } : null;
+        try {
+            // Leer los datos del formulario
+            const name = document.getElementById('name').value;
+            const surname = document.getElementById('surname').value;
+            const email = document.getElementById('email').value;
+            const phoneNumber = document.getElementById('phone_number').value;
+            const address = document.getElementById('address').value;
+            const applicationDate = document.getElementById('application_date').value;
+            const resumeFile = document.getElementById('resume').files[0];
 
-        // Generar un ID único para el aplicante
-        const applicantId = 'applicant-' + Date.now();
+            // Crear objeto con los datos (sin job_id)
+            const applicantData = {
+                ACTION: 'APPLICANT.ADD', // Corregí APPLICANT
+                name: name,
+                surname: surname,
+                email: email,
+                phone_number: phoneNumber,
+                address: address,
+                aplication_date: applicationDate
+            };
 
-        // Crear objeto con los datos del aplicante
-        const applicant = {
-            applicant_id: applicantId,
-            job_id: jobId,
-            name: name,
-            surname: surname,
-            email: email,
-            phone_number: phoneNumber,
-            address: address,
-            resume: resumeInfo,
-            application_date: applicationDate,
-            timestamp: new Date().toISOString()
-        };
+            // Opción 1: Enviar sin archivo (más simple)
+            let response;
+            if (!resumeFile) {
+                response = await fetch('http://localhost:8080/CrazyCow_Server/Controller', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams(applicantData)
+                });
+            } 
+            // Opción 2: Enviar con archivo (FormData)
+            else {
+                const formData = new FormData();
+                for (const key in applicantData) {
+                    formData.append(key, applicantData[key]);
+                }
+                formData.append('resume', resumeFile);
+                
+                response = await fetch('http://localhost:8080/CrazyCow_Server/Controller', {
+                    method: 'POST',
+                    body: formData
+                });
+            }
 
-        // Almacenar en localStorage
-        saveApplicant(applicant);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
 
-        // Redirigir a la página de confirmación
-        window.location.href = '../html/job-aplication.html';
+            const result = await response.text();
+            console.log('Success:', result);
+            
+            // Mostrar mensaje de éxito
+            successMessage.style.display = 'block';
+            form.reset();
+            
+            // Ocultar el mensaje después de 5 segundos
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+            
+        } catch (error) {
+            console.error('Error:', error);
+            alert(`Error submitting application: ${error.message}`);
+        } finally {
+            // Restaurar botón
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Application';
+        }
     });
-
-    // Función para guardar el aplicante en localStorage
-    function saveApplicant(applicant) {
-        // Obtener aplicantes existentes o inicializar array vacío
-        let applicants = JSON.parse(localStorage.getItem('jobApplicant')) || [];
-
-        // Agregar nuevo aplicante
-        applicants.push(applicant);
-
-        // Guardar en localStorage
-        localStorage.setItem('jobApplicant', JSON.stringify(applicants));
-    }
 });

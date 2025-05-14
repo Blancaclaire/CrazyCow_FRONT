@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Product</title>
+    <link rel="stylesheet" href="../css/delete-products.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../imagenes/fav-icon.png">
+    <link rel="icon" href="../imagenes/fav-icon.png">
+    <script src="../js/delete-products.js"></script>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="subtitle"></a>
+        <a href="../html/control-panel.html" class="bt-back">BACK </a>
+    </header>
+
+    <main>
+        <div class="title-page">
+            <p>DELETE PRODUCT</p>
+        </div>
+
+        <div class="success-message" id="success-message">
+            Product deleted successfully!
+        </div>
+        
+        <div class="error-message" id="error-message">
+            Error: Could not delete product.
+        </div>
+
+        <form id="delete-form" class="modern-form">
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <select id="category-select" name="category_id" class="category-select" required>
+                        <option value="" disabled selected>Select a category</option>
+                        <option value="1000">Burgers</option>
+                        <option value="1001">Forbitting</option>
+                        <option value="1002">Drinks</option>
+                        <option value="1003">Desserts</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <select id="product-select" name="product_id" class="category-select" required disabled>
+                        <option value="" disabled selected>Select a product</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="product-preview" id="product-preview">
+                <img id="product-image-preview" src="" alt="Product Image">
+                <div class="product-details">
+                    <h3 id="product-name-preview"></h3>
+                    <p id="product-price-preview"></p>
+                    <p id="product-description-preview"></p>
+                </div>
+            </div>
+
+            <button type="submit" class="bt delete-button">DELETE PRODUCT</button>
+        </form>
+    </main>
+</body>
+
+</html>

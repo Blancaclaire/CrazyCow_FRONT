@@ -1,0 +1,201 @@
+/* delete-products.css */
+/* FUENTES */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    font-family: "Lato", sans-serif;
+    background-color: #EDE6EF;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+}
+
+.subtitle {
+    display: flex;
+    position: relative;
+    font: inherit;
+    color: #52375b;
+    text-decoration: none;
+    font-size: 3vh;
+    padding: 1%;
+    left: 1%;
+    top: 1vh;
+    font-family: "Playfair", serif;
+}
+
+.bt-back {
+    display: flex;
+    position: relative;
+    align-items: center;
+    text-align: center;   
+    right: 1.5%;
+    padding: 1em;
+    color: #52375b;
+    border: solid 2px #52375b;
+    background-color: transparent;
+    text-decoration: none;
+    border-radius: 50px;
+    height: 3em;
+    margin-top: 2vh;
+    font-size: 2vh;
+}
+
+.bt-back:hover {
+    background-color: #52375b;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+/* TITLE-PAGE */
+.title-page {
+    text-align: center;
+    font-family: "Playfair",sans-serif;
+    font-size: 7vh;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    color: #52375b;
+}
+
+.modern-form {
+    width: 70vw;
+    max-width: 100%;
+    padding: 24px;
+    background: #ffffff;
+    border: 2px solid #52375b;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 5vh;
+}
+
+.input-group {
+    margin-bottom: 16px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.category-select {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    border: 2px solid #52375b;
+    border-radius: 10px;
+    color: #333;
+    padding: 0 10px;
+    background-color: white;
+}
+
+.product-preview {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    align-items: center;
+    gap: 20px;
+}
+
+#product-image-preview {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product-details {
+    flex: 1;
+}
+
+.product-details h3 {
+    color: #52375b;
+    margin-bottom: 10px;
+    font-family: "Playfair", serif;
+}
+
+.product-details p {
+    color: #333;
+    margin-bottom: 8px;
+    font-family: "Lato", sans-serif;
+}
+
+.bt {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    text-align: center;   
+    padding: 1em;
+    color: #52375b;
+    border: solid 2px #52375b;
+    background-color: transparent;
+    text-decoration: none;
+    border-radius: 15px;
+    height: 3em;
+    margin-top: 2vh;
+    font-size: 2vh;
+    cursor: pointer;
+    width: 100%;
+}
+
+.bt:hover {
+    background-color: #52375b;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.delete-button:hover {
+    background-color: #52375b;
+}
+
+.success-message {
+    display: none;
+    background-color: #d4edda;
+    color: #52375b;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px auto;
+    width: 70vw;
+    max-width: 100%;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+}
+
+.error-message {
+    display: none;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px auto;
+    width: 70vw;
+    max-width: 100%;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+}
