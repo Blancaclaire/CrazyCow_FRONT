@@ -1,5 +1,3 @@
-
-
 /* Contenedor principal */
 .container {
     width: 80%;
@@ -16,7 +14,6 @@
     font-family: 'Playfair', serif;
 }
 
-/* Estilo de los rectángulos */
 .rectangle {
     display: flex;
     justify-content: space-between;
@@ -27,6 +24,17 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.rectangle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.12);
+    border-color: #52375b;
 }
 
 /* Contenido de los rectángulos */
@@ -54,9 +62,7 @@
     color: #52375b;
     font-size: 1.1rem;
     font-family: 'Lato', sans-serif;
-
 }
-
 
 /* Botón */
 .button {
@@ -72,6 +78,8 @@
     font-size: 1rem;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    margin: 0 5px;
 }
 
 .button:hover {
@@ -80,3 +88,48 @@
     transform: scale(1.05);
 }
 
+/* Filtros */
+.filter-section {
+    margin: 30px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    background-color: white;
+    border: 2px solid #52375b;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-title {
+    font-family: 'Playfair', serif;
+    color: #52375b;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.filter-input {
+    padding: 10px;
+    border: 2px solid #52375b;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-family: 'Lato', sans-serif;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.loading {
+    font-family: 'Lato', sans-serif;
+    color: #52375b;
+    margin: 20px 0;
+    display: none;
+}
+
+.error-message {
+    color: #d9534f;
+    font-family: 'Lato', sans-serif;
+    margin: 20px 0;
+}

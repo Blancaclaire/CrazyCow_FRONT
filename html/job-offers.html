@@ -16,7 +16,7 @@
     <link rel="shortcut icon" href="../imagenes/fav-icon.png">
     <link rel="icon" href="../imagenes/fav-icon.png">
     
-    <script src="../js/job-offers.js"></script>
+    <script src="../js/job-offer.js"></script>
     <script src="../js/styles-general.js"></script>
 </head>
 
@@ -50,33 +50,25 @@
     </header>
     <div class="overlay" id="overlay"></div>
 
-    <section class="center-text">
-
-        <div class="container">
-            <h1 class="central-title">JOB OFFER</h1>
-
-            <div class="rectangle">
-                <div class="content">
-                    <p class="text">INFORMATION TECHNOLOGIES</p>
-                    <p class="text2">WEB APPLICATION DEVELOPER- FULL TIME JOB- SAN FRANCISCO</p>
-                    <p class="text3">San Francisco</p>
-                </div>
-                <a href="../html/job-aplication.html" class="button"> ➡
-                </a>
-            </div>
-
-            <div class="rectangle">
-                <div class="content">
-                    <p class="text">MARKETING</p>
-                    <p class="text2">WEB APPLICATION DEVELOPER- FULL TIME JOB- NEW YORK</p>
-                    <p class="text3">New York</p>
-                </div>
-                <a href="../html/job-aplication.html" class="button"> ➡
-                </a>
+    <div class="container">
+        <h1 class="central-title">Job offers</h1>
+        
+        <div class="filter-section">
+            <input type="text" id="offerTitle" class="filter-input" placeholder="Name of the offer">
+            <div class="button-container">
+                <button class="button" onclick="loadOffers()">Search</Search></button>
+                <button class="button" onclick="loadAllOffers()">Show All</button>
             </div>
         </div>
-    </section>
-
+        
+        <div class="loading" id="loading">
+            Loading offers...
+        </div>
+        
+        <div id="offerList">
+            <!-- Las ofertas se cargarán aquí dinámicamente -->
+        </div>
+    </div>
 </body>
 
 </html>
