@@ -55,8 +55,9 @@ function fetchEmployeeProfile(email) {
         console.warn("Could not find .employee-info element to display upload message");
     }
     
-    // URL del API - verifica que sea correcta
-    const apiUrl = `http://localhost:8080/CrazyCow_Server/Controller?ACTION=EMPLOYEE.FIND_BY_EMAIL&email=${encodeURIComponent(email)}`;
+    // URL del API - CORREGIDO para usar el endpoint FIND_ALL que es el que está implementado 
+    // en tu backend según el código que has proporcionado
+    const apiUrl = `http://localhost:8080/CrazyCow_Server/Controller?ACTION=EMPLOYEE.FIND_ALL&email=${encodeURIComponent(email)}`;
     console.log("Applying for profile from:", apiUrl);
     
     // Realizar la petición para obtener detalles del empleado
@@ -77,12 +78,14 @@ function fetchEmployeeProfile(email) {
                     throw new Error(data);
                 }
                 
-                // Intentar analizar como JSON
-                const employee = JSON.parse(data);
-                if (!employee) {
-                    throw new Error("Empty employee data was received");
+                // Intentar analizar como JSON - La API devuelve un array, no un objeto único
+                const employees = JSON.parse(data);
+                if (!employees || !Array.isArray(employees) || employees.length === 0) {
+                    throw new Error("No employee found with that email");
                 }
                 
+                // Tomar el primer empleado del array (debería ser el único)
+                const employee = employees[0];
                 displayEmployeeProfile(employee);
             } catch (e) {
                 // Si no es un JSON válido, podría ser un mensaje de error

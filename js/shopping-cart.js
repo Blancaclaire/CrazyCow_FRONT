@@ -16,11 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     updateBasketCount();
-    
     // Si estamos en la página del carrito, renderizarlo
-    if (window.location.href.includes('../html/shopping-cart.html')) {
+    if (window.location.href.includes('shopping-cart.html')) {
         renderCart();
-        
         // Event listeners específicos de la página del carrito
         document.querySelector('.empty-cart button')?.addEventListener('click', function() {
             window.location.href = '../html/products-menu.html';
@@ -78,12 +76,12 @@ function renderCart() {
     const subtotalAmount = document.getElementById('subtotalAmount');
     const totalAmount = document.getElementById('totalAmount');
     const addProductsSection = document.getElementById('addProductsSection');
-    
+    console.log("Cart contents:", cart);
     // Si no estamos en la página de carrito, salir
     if (!cartContents || !emptyCartMessage) return;
     
     function formatPrice(price) {
-        return '€' + price.toFixed(2);
+        return '$' + price.toFixed(2);
     }
     
     function calculateTotal() {
