@@ -145,6 +145,40 @@ function displayEmployeeProfile(employee) {
     updateElementText('salary', employee.salary);
     updateElementText('id', employee.employee_id);
     updateElementText('departamento', employee.job_id);
+
+// BOTONES DE ACCION SEGUN EL DEPARTAMENTO
+     const actionsDiv = document.querySelector('.actions');
+    if (actionsDiv && employee.restaurant_id) {
+        // Limpiar el contenedor por si acaso
+        actionsDiv.innerHTML = '';
+
+        // Verificar si el empleado tiene job_id 6001 correspondientes  alos empleados del departamento de cocina o eres camarero
+        if (employee.job_id == 6001 || employee.job_id == 6002 ) { 
+            const ordersButton = document.createElement('a');
+            ordersButton.href = `../html/orders.html?restaurant_id=${employee.restaurant_id}`;
+            ordersButton.className = 'bt-orders';
+            ordersButton.textContent = 'Orders';
+            actionsDiv.appendChild(ordersButton);
+        }// Botón para job_id 6004 (Applicants)
+        else if (employee.job_id == 6004) {
+            const applicantsButton = document.createElement('a');
+            applicantsButton.href = `../html/applicants.html`; // Ajusta la URL según tu estructura
+            applicantsButton.className = 'bt-applicants';
+            applicantsButton.textContent = 'View Applicants';
+            actionsDiv.appendChild(applicantsButton);
+        }   // Botón para job_id 6003 (Control Panel)
+        else if (employee.job_id == 6003) {
+            const applicantsButton = document.createElement('a');
+            applicantsButton.href = `../html/control-panel.html`; // Ajusta la URL según tu estructura
+            applicantsButton.className = 'bt-applicants';
+            applicantsButton.textContent = 'Control Panel';
+            actionsDiv.appendChild(applicantsButton);
+        }
+         else {
+            console.log("Este empleado no tiene permisos ");
+        }
+    }
+
 }
 
 function ensureEmployeeInfoStructure(infoSection) {

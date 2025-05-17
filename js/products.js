@@ -114,7 +114,7 @@ function createProductElement(product, gridId) {
     const productElement = document.createElement('div');
     productElement.className = 'product-item';
     productElement.innerHTML = `
-        <a href="#" data-product-id="${product.id}">
+        <a href="#" data-product-id="${product.product_id}">
             <img src="../imagenes/${product.image}" alt="${product.product_name}" onerror="this.src='../imagenes/placeholder.png'">
             <div class="product-info">
                 <h3>${product.product_name}</h3>
@@ -163,12 +163,15 @@ function showProductDetails(product) {
             <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">Precio: <strong style="color: #663399;">€${parseFloat(product.price).toFixed(2)}</strong></p>
             <p style="margin-bottom: 1rem;">${product.description || 'No hay descripción disponible para este producto.'}</p>
             <button class="add-to-cart-btn" 
-                    data-id="${product.id}" 
+                    data-id="${product.product_id}" 
                     data-name="${product.product_name}" 
                     data-price="${product.price}" 
                     data-image="${product.image}" 
                     data-description="${product.description || ''}" 
                     data-type="${productType}" 
+
+
+                    
                     style="background-color: #9b8bb4; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: bold;">
                 Añadir al carrito
             </button>
