@@ -1,8 +1,7 @@
 // Configuración base
 const API_BASE_URL = 'http://localhost:8080/CrazyCow_Server/Controller';
-const PRODUCT_ACTION = 'ACTION=PRODUCT.FIND_ALL';
 
-// Mapeo de categorías (ajusta según tu base de datos)
+// Mapeo de categorías
 const CATEGORY_MAP = {
     'burgers': '1000',      // Hamburguesas
     'drinks': '1002',       // Bebidas
@@ -10,16 +9,25 @@ const CATEGORY_MAP = {
     'desserts': '1003'      // Postres
 };
 
+// Función que se ejecuta cuando el DOM está completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
+    // Inicialización del carrito si no existe
     if (!localStorage.getItem('burgerCart')) {
         localStorage.setItem('burgerCart', JSON.stringify([]));
     }
     
+    // Actualizar contador del carrito en la interfaz
     updateBasketCount();
-    // Si estamos en la página del carrito, renderizarlo
-    if (window.location.href.includes('shopping-cart.html')) {
+    
+    // Comprobar en qué página estamos y ejecutar la lógica correspondiente
+    const currentPage = window.location.pathname;
+    
+    // Si estamos en la página del carrito
+    if (currentPage.includes('shopping-cart.html')) {
+        console.log("Inicializando página de carrito");
         renderCart();
-        // Event listeners específicos de la página del carrito
+        
+        // Event listeners para la página del carrito
         document.querySelector('.empty-cart button')?.addEventListener('click', function() {
             window.location.href = '../html/products-menu.html';
         });
@@ -28,14 +36,281 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             window.location.href = '../html/products-menu.html';
         });
-    }
-    
-    // Si estamos en la página de productos, configurar los event listeners para añadir al carrito
-    if (window.location.href.includes('../html/products-menu.html')) {
-        // El event listener para 'add-to-cart' se configura en el script products.js
-        // cuando se muestra el detalle del producto
+        
+        // Configurar el botón de checkout
+        document.querySelector('.checkout-btn')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            prepareCheckout();
+        });
+    } 
+    // Si estamos en la página de pago
+    else if (currentPage.includes('payment.html')) {
+        console.log("Inicializando página de pago");
+        initPaymentPage();
     }
 });
+
+// Función para preparar el checkout y redirigir a la página de login
+function prepareCheckout() {
+    const cart = JSON.parse(localStorage.getItem('burgerCart')) || [];
+    
+    if (cart.length === 0) {
+        alert('Tu carrito está vacío. Añade productos antes de proceder al pago.');
+        return;
+    }
+    
+    // Calcular el total
+    const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+    
+    // Guardar datos necesarios para el pago
+    localStorage.setItem('totalPrice', totalPrice.toFixed(2));
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+    
+    // Guardar la URL de destino después del login
+    localStorage.setItem('redirectAfterLogin', '../html/payment.html');
+    
+    // Verificar si el usuario ya está logueado
+    const isLoggedIn = checkUserLoginStatus();
+    
+    if (isLoggedIn) {
+        // Si ya está logueado, guardar datos y redirigir directamente al pago
+        saveUserDataForPayment();
+        window.location.href = '../html/payment.html';
+    } else {
+        // Si no está logueado, redirigir al login
+        window.location.href = '../html/login.html';
+    }
+}
+
+// Función para verificar el estado de login del usuario
+function checkUserLoginStatus() {
+    // Verificar si el usuario tiene un token de sesión o ID de cliente válido
+    const customerId = localStorage.getItem('customerId');
+    const userToken = localStorage.getItem('userToken');
+    
+    // Aquí puedes agregar cualquier lógica adicional para validar la sesión
+    // Por ejemplo, verificar si el token no ha expirado
+    
+    return customerId && customerId !== '0' && userToken;
+}
+
+// Guardar datos del cliente necesarios para el pago
+function saveUserDataForPayment() {
+    // Obtener datos del cliente desde localStorage o sessionStorage
+    const customerId = localStorage.getItem('customerId') || '0';
+    const restaurantId = localStorage.getItem('restaurantId') || '0';
+    const deliveryLocation = localStorage.getItem('deliveryLocation') || '';
+    
+    // Guardar en localStorage para que estén disponibles en la página de pago
+    localStorage.setItem('customerId', customerId);
+    localStorage.setItem('restaurantId', restaurantId);
+    localStorage.setItem('deliveryLocation', deliveryLocation);
+}
+
+// Inicializar la página de pago
+function initPaymentPage() {
+    // Verificar si el usuario está logueado
+    if (!checkUserLoginStatus()) {
+        alert('Debes iniciar sesión para proceder al pago');
+        window.location.href = '../html/login.html';
+        return;
+    }
+    
+    // Verificar si hay datos de compra
+    if (!localStorage.getItem('totalPrice') || !localStorage.getItem('cartItems')) {
+        alert('No hay información de compra. Por favor, regresa al carrito.');
+        window.location.href = '../html/shopping-cart.html';
+        return;
+    }
+
+    // Obtener datos del localStorage
+    const totalPrice = localStorage.getItem('totalPrice') || '0.00';
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const customerId = localStorage.getItem('customerId') || '0';
+    const restaurantId = localStorage.getItem('restaurantId') || '0';
+    const location = localStorage.getItem('deliveryLocation') || '';
+    
+    // Actualizar el precio total mostrado
+    const dynamicText = document.getElementById('dynamic-text');
+    if (dynamicText) {
+        dynamicText.textContent = `${parseFloat(totalPrice).toFixed(2)}`;
+    }
+    
+    // Configurar elementos del formulario de pago
+    setupPaymentForm();
+}
+
+// Configurar formulario de pago
+function setupPaymentForm() {
+    const cardNumberInput = document.getElementById('card-number');
+    const cardTypeSelect = document.getElementById('card-type');
+    const cvvInput = document.getElementById('cvv');
+    const payButton = document.getElementById('pay-button');
+    
+    if (!cardNumberInput || !cardTypeSelect || !cvvInput || !payButton) return;
+    
+    // Detección automática del tipo de tarjeta
+    cardNumberInput.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '');
+        
+        if (this.value.length > 16) {
+            this.value = this.value.slice(0, 16);
+        }
+        
+        const cardNumber = this.value;
+        if (cardNumber.startsWith('4')) {
+            cardTypeSelect.value = "VISA";
+        } else if (cardNumber.startsWith('5')) {
+            cardTypeSelect.value = "MASTERCARD";
+        } else if (cardNumber.startsWith('3')) {
+            cardTypeSelect.value = "AMEX";
+        } else if (cardNumber.startsWith('6')) {
+            cardTypeSelect.value = "DISCOVER";
+        } else if (cardNumber.length > 0) {
+            cardTypeSelect.value = "OTHER";
+        }
+    });
+    
+    // Validación CVV
+    cvvInput.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '');
+        
+        const cardType = cardTypeSelect.value;
+        const maxLength = (cardType === "AMEX") ? 4 : 3;
+        
+        if (this.value.length > maxLength) {
+            this.value = this.value.slice(0, maxLength);
+        }
+    });
+    
+    // Actualizar longitud máxima del CVV cuando cambia el tipo de tarjeta
+    cardTypeSelect.addEventListener('change', function() {
+        const cardType = this.value;
+        const cvvMaxLength = (cardType === "AMEX") ? 4 : 3;
+        cvvInput.setAttribute('maxlength', cvvMaxLength);
+        
+        if (cvvInput.value.length > cvvMaxLength) {
+            cvvInput.value = cvvInput.value.slice(0, cvvMaxLength);
+        }
+    });
+    
+    // Manejar el envío del pago
+    payButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        processPayment();
+    });
+}
+
+// Procesar el pago
+function processPayment() {
+    // Elementos del formulario
+    const holderName = document.getElementById('holder-name').value.trim();
+    const cardNumber = document.getElementById('card-number').value.trim();
+    const cardType = document.getElementById('card-type').value;
+    const cvv = document.getElementById('cvv').value.trim();
+    const payButton = document.getElementById('pay-button');
+    
+    // Validar formulario
+    let isValid = validatePaymentForm(holderName, cardNumber, cardType, cvv);
+    
+    if (!isValid) return;
+    
+    // Obtener datos necesarios para el pedido
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const totalPrice = localStorage.getItem('totalPrice') || '0.00';
+    const customerId = localStorage.getItem('customerId') || '0';
+    const restaurantId = localStorage.getItem('restaurantId') || '0';
+    const location = localStorage.getItem('deliveryLocation') || '';
+    
+    // Preparar detalles del pedido
+    let orderDetailsString = cartItems.map(item => `${item.id}:${item.quantity}`).join(',');
+    
+    // Mostrar estado de procesamiento
+    const originalButtonText = payButton.textContent;
+    payButton.textContent = "Procesando...";
+    payButton.disabled = true;
+    
+    // Crear URL para la API
+    const url = new URL('/CrazyCow_Server/Controller', window.location.origin);
+    url.searchParams.append('ACTION', 'ORDER.ADD');
+    url.searchParams.append('customer_id', customerId);
+    url.searchParams.append('restaurant_id', restaurantId);
+    url.searchParams.append('order_status', 'Preparation');
+    url.searchParams.append('total', totalPrice);
+    url.searchParams.append('location', location);
+    url.searchParams.append('order_details', orderDetailsString);
+    url.searchParams.append('holder_name', holderName);
+    url.searchParams.append('holder_number', cardNumber);
+    url.searchParams.append('cvv', cvv);
+    url.searchParams.append('card_type', cardType);
+    
+    // Enviar pedido al servidor
+    fetch(url, { method: 'GET' })
+    .then(response => {
+        if (!response.ok) throw new Error('Error en el procesamiento del pago');
+        return response.text();
+    })
+    .then(data => {
+        if (data.includes('ERROR')) throw new Error(data);
+        
+        // Limpiar carrito después de una compra exitosa
+        localStorage.removeItem('burgerCart');
+        localStorage.removeItem('totalPrice');
+        localStorage.removeItem('cartItems');
+        
+        // Guardar confirmación y redirigir
+        localStorage.setItem('orderConfirmation', 'success');
+        window.location.href = '../html/payment-success.html';
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error en el pago: ' + error.message);
+    })
+    .finally(() => {
+        payButton.textContent = originalButtonText;
+        payButton.disabled = false;
+    });
+}
+
+// Validar formulario de pago
+function validatePaymentForm(holderName, cardNumber, cardType, cvv) {
+    let isValid = true;
+    
+    if (!holderName) {
+        document.getElementById('name-error').textContent = 'Por favor ingrese el nombre del titular';
+        document.getElementById('name-error').classList.add('visible');
+        isValid = false;
+    } else {
+        document.getElementById('name-error').classList.remove('visible');
+    }
+    
+    if (!cardNumber || cardNumber.length < 13) {
+        document.getElementById('number-error').textContent = 'Por favor ingrese un número de tarjeta válido';
+        document.getElementById('number-error').classList.add('visible');
+        isValid = false;
+    } else {
+        document.getElementById('number-error').classList.remove('visible');
+    }
+    
+    if (!cardType) {
+        document.getElementById('card-type-error').textContent = 'Por favor seleccione un tipo de tarjeta';
+        document.getElementById('card-type-error').classList.add('visible');
+        isValid = false;
+    } else {
+        document.getElementById('card-type-error').classList.remove('visible');
+    }
+    
+    const expectedCvvLength = (cardType === "AMEX") ? 4 : 3;
+    if (!cvv || cvv.length !== expectedCvvLength) {
+        document.getElementById('cvv-error').textContent = `Por favor ingrese un CVV válido de ${expectedCvvLength} dígitos`;
+        document.getElementById('cvv-error').classList.add('visible');
+        isValid = false;
+    } else {
+        document.getElementById('cvv-error').classList.remove('visible');
+    }
+    
+    return isValid;
+}
 
 // Actualizar contador del carrito
 function updateBasketCount() {
@@ -76,8 +351,8 @@ function renderCart() {
     const subtotalAmount = document.getElementById('subtotalAmount');
     const totalAmount = document.getElementById('totalAmount');
     const addProductsSection = document.getElementById('addProductsSection');
-    console.log("Cart contents:", cart);
-    // Si no estamos en la página de carrito, salir
+    
+    // Si no estamos en la página de carrito o no encontramos los elementos, salir
     if (!cartContents || !emptyCartMessage) return;
     
     function formatPrice(price) {
@@ -86,22 +361,25 @@ function renderCart() {
     
     function calculateTotal() {
         const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-        subtotalAmount.textContent = formatPrice(subtotal);
-        totalAmount.textContent = formatPrice(subtotal);
+        if (subtotalAmount) subtotalAmount.textContent = formatPrice(subtotal);
+        if (totalAmount) totalAmount.textContent = formatPrice(subtotal);
         return subtotal;
     }
     
     if (cart.length === 0) {
         emptyCartMessage.style.display = 'block';
-        cartSummary.style.display = 'none';
-        addProductsSection.style.display = 'none';
-        loadSuggestedProducts();
+        if (cartSummary) cartSummary.style.display = 'none';
+        if (addProductsSection) addProductsSection.style.display = 'none';
+        // Cargar productos sugeridos si existe la función
+        if (typeof loadSuggestedProducts === 'function') {
+            loadSuggestedProducts();
+        }
         return;
     }
     
     emptyCartMessage.style.display = 'none';
-    cartSummary.style.display = 'block';
-    addProductsSection.style.display = 'block';
+    if (cartSummary) cartSummary.style.display = 'block';
+    if (addProductsSection) addProductsSection.style.display = 'block';
     cartContents.innerHTML = '';
     
     // Agrupar por categorías específicas
@@ -169,12 +447,16 @@ function renderCart() {
     });
     
     calculateTotal();
-    setupEventListeners();
-    loadSuggestedProducts();
+    setupCartEventListeners();
+    
+    // Cargar productos sugeridos si existe la función
+    if (typeof loadSuggestedProducts === 'function') {
+        loadSuggestedProducts();
+    }
 }
 
 // Configurar event listeners para la página del carrito
-function setupEventListeners() {
+function setupCartEventListeners() {
     document.querySelectorAll('.remove-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'));
@@ -197,6 +479,7 @@ function setupEventListeners() {
     });
 }
 
+// Funciones para manipulación del carrito
 function removeItem(index) {
     const cart = JSON.parse(localStorage.getItem('burgerCart')) || [];
     cart.splice(index, 1);
@@ -225,81 +508,6 @@ function increaseQuantity(index) {
     updateBasketCount();
 }
 
-// Cargar productos sugeridos en la página de carrito
-function loadSuggestedProducts() {
-    const suggestedProductsContainer = document.getElementById('suggestedProducts');
-    if (!suggestedProductsContainer) return;
-    
-    suggestedProductsContainer.innerHTML = '<div class="suggested-products-grid"></div>';
-    const gridContainer = suggestedProductsContainer.querySelector('.suggested-products-grid');
-    
-    // Seleccionar una categoría aleatoria (incluyendo forBitting)
-    const categories = ['burgers', 'drinks', 'forBitting', 'desserts'];
-    const randomCategory = categories[Math.floor(Math.random() * categories.length)];
-    const categoryId = CATEGORY_MAP[randomCategory] || '1000';
-    
-    fetch(`${API_BASE_URL}?${PRODUCT_ACTION}&category_id=${categoryId}`)
-        .then(response => response.json())
-        .then(products => {
-            if (!products || products.length === 0) {
-                gridContainer.innerHTML = '<p>No hay productos sugeridos disponibles</p>';
-                return;
-            }
-            
-            // Seleccionar 3 productos aleatorios
-            const shuffled = [...products].sort(() => 0.5 - Math.random());
-            const selectedProducts = shuffled.slice(0, 3);
-            
-            // Mostrar productos
-            selectedProducts.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.className = 'suggested-product-card';
-                
-                productCard.innerHTML = `
-                    <img src="${product.Producto_IMG}" alt="${product.Nombre}" class="suggested-product-image">
-                    <div class="suggested-product-info">
-                        <div class="suggested-product-name">${product.Nombre}</div>
-                        <div class="suggested-product-price">€${product.Precio.toFixed(2)}</div>
-                        <button class="add-to-cart" data-id="${product.ID_Producto}" data-type="${randomCategory}">Añadir</button>
-                    </div>
-                `;
-                
-                gridContainer.appendChild(productCard);
-            });
-            
-            // Event listeners para botones "Añadir"
-            gridContainer.querySelectorAll('.add-to-cart').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const productId = parseInt(this.getAttribute('data-id'));
-                    const productType = this.getAttribute('data-type');
-                    
-                    fetch(`${API_BASE_URL}?ACTION=PRODUCT.FIND_BY_ID&product_id=${productId}`)
-                        .then(response => response.json())
-                        .then(product => {
-                            if (product) {
-                                addToCart({
-                                    id: product.ID_Producto,
-                                    name: product.Nombre,
-                                    price: product.Precio,
-                                    image: product.Producto_IMG,
-                                    description: product.Descripcion,
-                                    type: productType
-                                });
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error al obtener detalles del producto:', error);
-                            showNotification('Error al añadir el producto');
-                        });
-                });
-            });
-        })
-        .catch(error => {
-            console.error('Error al cargar productos sugeridos:', error);
-            gridContainer.innerHTML = '<p>Error al cargar sugerencias</p>';
-        });
-}
-
 // Función para añadir al carrito (usada tanto en la página de productos como en la de carrito)
 function addToCart(product) {
     const cart = JSON.parse(localStorage.getItem('burgerCart')) || [];
@@ -326,7 +534,7 @@ function addToCart(product) {
     updateBasketCount();
     
     // Si estamos en la página de carrito, renderizarlo de nuevo
-    if (window.location.href.includes('../html/shopping-cart.html')) {
+    if (window.location.href.includes('shopping-cart.html')) {
         renderCart();
     }
     
@@ -339,9 +547,27 @@ function clearCart() {
     updateBasketCount();
     
     // Si estamos en la página de carrito, renderizarlo de nuevo
-    if (window.location.href.includes('../html/shopping-cart.html')) {
+    if (window.location.href.includes('shopping-cart.html')) {
         renderCart();
     }
     
     showNotification('Carrito vaciado');
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -2,12 +2,11 @@
 <html lang="en">
 
 <head>
-    <style type="text/css"></style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/payment.css">
     <link rel="stylesheet" href="../css/styles-general.css">
-    <title>CrazyCow</title>
+    <title>CrazyCow-Payment</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
@@ -15,42 +14,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../imagenes/fav-icon.png">
     <link rel="icon" href="../imagenes/fav-icon.png">
-   
-    <script src="../js/payment-script.js"></script>
+    <script src="../js/shopping-cart.js"></script>
+    <!-- <script src="../js/payment-script.js"></script> -->
 </head>
 
 <body>
 
     <header class="dark-rectangle">
         <div class="centered-text">
-            <h1>FORM OF PAYMENT</h1>
+            <h1>PAYMENT INFORMATION</h1>
         </div>
     </header>
 
     <div class="login-register">
-        <form class="modern-form">
+        <form class="modern-form" id="payment-form">
             <div class="form-title">CREDIT CARD</div>
 
             <div class="form-body">
-
                 <div class="input-group">
                     <div class="input-wrapper">
-                        <input required placeholder="Name on the card *" class="form-input" type="Name">
+                        <input required placeholder="Name on the card *" class="form-input" type="text" id="holder-name">
+                        <small class="error-message" id="name-error"></small>
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-wrapper">
-                        <input required placeholder="Number on the card *" class="form-input" type="Number">
+                        <input required placeholder="Card number *" class="form-input" type="text" id="card-number" maxlength="16">
+                        <div class="card-type" id="card-type-indicator"></div>
+                        <small class="error-message" id="number-error"></small>
                     </div>
                 </div>
-                <div class="input-group">
-                    <div class="input-wrapper">
-                        <input required placeholder="Expiry date *" class="form-input" type="Date">
+                <div class="input-group card-details">
+                    <div class="input-wrapper card-type-select">
+                        <select required class="form-input" id="card-type">
+                            <option value="" disabled selected>Card Type *</option>
+                            <option value="VISA">Visa</option>
+                            <option value="MASTERCARD">MasterCard</option>
+                            <option value="AMEX">American Express</option>
+                            <option value="DISCOVER">Discover</option>
+                            <option value="OTHER">Other</option>
+                        </select>
+                        <small class="error-message" id="card-type-error"></small>
                     </div>
-                </div>
-                <div class="input-group">
-                    <div class="input-wrapper">
-                        <input required placeholder="CVV *" class="form-input" type="CVV">
+                    <div class="input-wrapper cvv">
+                        <input required placeholder="CVV *" class="form-input" type="text" id="cvv" maxlength="4">
+                        <small class="error-message" id="cvv-error"></small>
                     </div>
                 </div>
             </div>
@@ -63,25 +71,23 @@
                 TOTAL
             </div>
             <div class="text-right" id="dynamic-text">
-                Cargando...
+                Loading...
             </div>
         </div>
     </div>
 
     <div class="center-container">
-        <button class="center-button">PAY</button>
+        <button class="center-button" id="pay-button">PAY NOW</button>
     </div>
 
     <div class="center-container">
-        <a href="../html/shopping-cart.html" class="back-button">Back Shopping cart</a>
+        <a href="../html/shopping-cart.html" class="back-button">Back to Shopping Cart</a>
     </div>
 
     <footer class="footer">
-
         <div class="footer-left">
             <img src="../imagenes/logo2oscuro.png" alt="Logo" class="footer-logo">
         </div>
-
 
         <div class="footer-center">
             <a href="../html/index.html" class="footer-button">Home</a>
@@ -90,7 +96,6 @@
             <a href="../html/login.html" class="footer-button">Login</a>
             <a href="../html/login-employee.html" class="footer-button">Employee area</a>
         </div>
-
 
         <div class="footer-right">
             <a href="https://www.facebook.com" target="_blank" class="social-link">
@@ -106,8 +111,8 @@
                 <img src="../imagenes/tik-tok.png" alt="LinkedIn" class="social-icon">
             </a>
         </div>
-
     </footer>
+    
     <footer>
         <div class="footer-bottom">
             <p class="left-text">© 2025 CrazyCow. All Rights Reserved.</p>

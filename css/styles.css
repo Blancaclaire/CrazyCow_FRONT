@@ -90,6 +90,8 @@ body {
   background-color: #52375b;
   border: none;
   border-radius: 15px;
+  text-decoration: none;
+  
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }

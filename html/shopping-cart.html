@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/shopping-cart.css">
     <link rel="stylesheet" href="../css/styles-general.css">
-    <title>CrazyCow</title>
+    <title>CrazyCow-shoppingcard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="../imagenes/fav-icon.png">
     <link rel="icon" href="../imagenes/fav-icon.png">
+    <script src="../js/shopping-cart.js"></script>
     <!-- Scripts reorganizados y optimizados -->
 </head>
 
@@ -62,7 +63,7 @@
         <div class="empty-cart" id="emptyCartMessage">
             <img src="../imagenes/vacafondo1.png" alt="Empty Cart">
             <p>Your cart is empty</p>
-            <button>Start Shopping</button>
+            <a href="../html/products-menu.html" class="continue-shopping">Start Shopping</a>
         </div>
 
         <div class="cart-summary" id="cartSummary">
@@ -86,12 +87,8 @@
 
         <br>
 
-        <a href="../html/payment.html" class="checkout-btn">Proceed to Checkout</a>
+        <a href="../html/login.html" class="checkout-btn">Proceed to Checkout</a>
 
-        <div class="suggested-products">
-            <h2>You might be interested in</h2>
-            <div class="product-grid" id="suggestedProducts"></div>
-        </div>
     </div>
 
     <footer class="footer">
