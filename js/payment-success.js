@@ -1,55 +1,53 @@
+// Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
-    // Check if we arrived from a successful payment
+    // Verificar si llegamos desde un pago exitoso
     const isPaymentSuccess = localStorage.getItem('orderConfirmation') === 'success';
     
     if (!isPaymentSuccess) {
-        // Redirect back to cart if not coming from payment
-        // Uncomment this if you want to enforce the redirect
-        // window.location.href = '../html/shopping-cart.html';
-        // return;
     }
     
-    // Clear the confirmation flag
+    // Limpiar la bandera de confirmación
     localStorage.removeItem('orderConfirmation');
     
-    // Display order details
+    // Mostrar los detalles del pedido
     displayOrderDetails();
     
-    // Configure event for the continue shopping button
+    // Configurar evento para el botón de continuar comprando
     document.querySelector('.continue-shopping').addEventListener('click', function(e) {
         e.preventDefault();
         window.location.href = '../html/products-menu.html';
     });
 });
 
+// Función para mostrar los detalles del pedido
 function displayOrderDetails() {
     const orderIdElement = document.getElementById('order-id');
     const paymentIdElement = document.getElementById('payment-id');
     const orderDateElement = document.getElementById('order-date');
     
-    // Get order data from localStorage if available
+    // Obtener datos del pedido de localStorage si están disponibles
     const orderData = JSON.parse(localStorage.getItem('orderData')) || {};
     
-    // Display order ID or generate a random one
+    // Mostrar ID del pedido o generar uno aleatorio
     if (orderData.orderId) {
         orderIdElement.textContent = orderData.orderId;
     } else {
         orderIdElement.textContent = 'ORD-' + generateRandomId(8);
     }
     
-    // Display payment ID or generate a random one
+    // Mostrar ID del pago o generar uno aleatorio
     if (orderData.paymentId) {
         paymentIdElement.textContent = orderData.paymentId;
     } else {
         paymentIdElement.textContent = 'PAY-' + generateRandomId(8);
     }
     
-    // Display current date
+    // Mostrar fecha actual
     const today = new Date();
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     orderDateElement.textContent = today.toLocaleDateString('en-US', options);
     
-    // Save order data for reference
+    // Guardar datos del pedido para referencia futura
     const newOrderData = {
         orderId: orderIdElement.textContent,
         paymentId: paymentIdElement.textContent,
@@ -57,12 +55,12 @@ function displayOrderDetails() {
     };
     localStorage.setItem('orderData', JSON.stringify(newOrderData));
     
-    // Clear cart data
+    // Limpiar datos del carrito
     localStorage.removeItem('cartItems');
     localStorage.removeItem('totalPrice');
 }
 
-// Helper function to generate random ID
+// Función auxiliar para generar ID aleatorio
 function generateRandomId(length) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     let result = '';

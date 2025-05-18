@@ -1,27 +1,21 @@
-/**
- * JavaScript for Crazy Cow Employee System
- * Handles both login and employee profile display functionality
- */
-
-// Wait for the DOM to be fully loaded
+// Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
-    // Check which page we're on based on HTML elements
+    // Detectar en qué página estamos mediante elementos HTML
     const loginForm = document.getElementById('loginForm');
     const employeeInfoSection = document.querySelector('.employee-info');
     
     if (loginForm) {
-        // We're on the login page - initialize login functionality
+        // Estamos en la página de login - inicializar funcionalidad
         initializeLoginPage();
     } else if (employeeInfoSection) {
-        // We're on the employee details page - load employee data
+        // Estamos en la página de detalles de empleado - cargar datos
         initializeEmployeeDetailsPage();
     }
 });
 
-// ==================== LOGIN PAGE FUNCTIONS ====================
 
 function initializeLoginPage() {
-    // Handle password visibility toggle
+    // Configurar el botón para mostrar/ocultar contraseña
     const mostrarBtn = document.querySelector('.password-toggle');
     const passInput = document.getElementById('password');
     
@@ -31,78 +25,80 @@ function initializeLoginPage() {
         });
     }
     
-    // Handle login form submission
+    // Manejar el envío del formulario de login
     const formulario = document.getElementById('loginForm');
     if (formulario) {
         formulario.addEventListener('submit', function(e) {
             e.preventDefault();
             
+            // Obtener valores del formulario
             const email = document.getElementById('usernameEmail').value.trim();
             const pass = document.getElementById('password').value;
             const mensaje = document.getElementById('loginMessage');
             
-            // Field validation
+            /* Validación de campos */
             if (!email || !pass) {
-                mostrarError(mensaje, 'Ingresa email y contraseña');
+                mostrarError(mensaje, 'Please enter both email and password');
                 return;
             }
             
-            // Email format validation
+            // Validar formato de email
             if (!validarEmail(email)) {
-                mostrarError(mensaje, 'Ingresa un email válido');
+                mostrarError(mensaje, 'Please enter a valid email address');
                 return;
             }
             
-            // Show loading message
-            mostrarInfo(mensaje, 'We are loading...');
+            // Mostrar mensaje de carga
+            mostrarInfo(mensaje, 'Authenticating...');
             
-            // Send login request - Fixed to match Java controller expectations
-            // The Java controller expects URL parameters, not form data
+            
             fetch(`http://localhost:8080/CrazyCow_Server/Controller?ACTION=EMPLOYEE.LOGIN&email=${encodeURIComponent(email)}&password=${encodeURIComponent(pass)}`, {
-                method: 'GET' // Changed to GET to match the Java controller's expectations
+                method: 'GET' // Usamos GET como espera el controlador Java
             })
             .then(res => {
-                if (!res.ok) {
-                    throw new Error('Error in server response');
-                }
+                if (!res.ok) throw new Error('Server response error');
                 return res.text();
             })
             .then(respuesta => {
                 respuesta = respuesta.trim();
                 
+                // Manejar diferentes respuestas del servidor
                 if (respuesta === "OK") {
-                    // Successful login
-                    mostrarExito(mensaje, 'Moo-velous! Redirecting to employee dashboard!');
+                    // Login exitoso
+                    mostrarExito(mensaje, 'Login successful! Redirecting...');
                     
-                    // Save user email in sessionStorage
+                    // Guardar email en sessionStorage
                     sessionStorage.setItem('employeeEmail', email);
                     
-                    // Redirect after 2 seconds
+                    // Redirigir después de 2 segundos
                     setTimeout(() => {
                         window.location.href = '../html/employee-details.html';
                     }, 2000);
                 } else if (respuesta === "NO") {
-                    // Incorrect credentials
-                    mostrarError(mensaje, 'Incorrect email or password');
+                    // Credenciales incorrectas
+                    mostrarError(mensaje, 'Invalid email or password');
                 } else {
-                    // Unexpected server response
+                    // Respuesta inesperada del servidor
                     mostrarError(mensaje, 'Unexpected error. Please try again');
                     console.error('Server response:', respuesta);
                 }
             })
             .catch(error => {
-                console.error('Error in the application:', error);
-                mostrarError(mensaje, 'Error connecting to the server');
+                console.error('Application error:', error);
+                mostrarError(mensaje, 'Connection error. Please try again');
             });
         });
     }
 }
 
+
+// Validar formato de email
 function validarEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
 }
 
+// Mostrar mensaje de error
 function mostrarError(elemento, mensaje) {
     if (elemento) {
         elemento.textContent = mensaje;
@@ -112,6 +108,7 @@ function mostrarError(elemento, mensaje) {
     }
 }
 
+// Mostrar mensaje de éxito
 function mostrarExito(elemento, mensaje) {
     if (elemento) {
         elemento.textContent = mensaje;
@@ -121,6 +118,7 @@ function mostrarExito(elemento, mensaje) {
     }
 }
 
+// Mostrar mensaje informativo
 function mostrarInfo(elemento, mensaje) {
     if (elemento) {
         elemento.textContent = mensaje;
@@ -129,4 +127,3 @@ function mostrarInfo(elemento, mensaje) {
         console.log(mensaje);
     }
 }
-

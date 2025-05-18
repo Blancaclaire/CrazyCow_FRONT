@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     // Elementos del formulario
     const loginForm = document.getElementById('loginForm');
@@ -23,16 +22,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Validaciones básicas
             if (!email || !password) {
-                showMessage(messageElement, 'Por favor ingresa email y contraseña', 'error');
+                showMessage(messageElement, 'Please enter both email and password', 'error');
                 return;
             }
 
             if (!validateEmail(email)) {
-                showMessage(messageElement, 'Por favor ingresa un email válido', 'error');
+                showMessage(messageElement, 'Please enter a valid email address', 'error');
                 return;
             }
 
-            showMessage(messageElement, 'Verificando credenciales...', 'info');
+            showMessage(messageElement, 'Verifying credentials...', 'info');
 
             try {
                 // 1. Primero validamos las credenciales
@@ -46,21 +45,21 @@ document.addEventListener('DOMContentLoaded', function() {
                         // 3. Guardamos los datos relevantes en localStorage
                         saveCustomerData(customerData);
                         
-                        showMessage(messageElement, '¡Bienvenido! Redirigiendo...', 'success');
+                        showMessage(messageElement, 'Welcome! Redirecting...', 'success');
                         
                         // Redirigir después de 1.5 segundos
                         setTimeout(() => {
                             window.location.href = '../html/payment.html';
                         }, 1500);
                     } else {
-                        showMessage(messageElement, 'Error al obtener datos del cliente', 'error');
+                        showMessage(messageElement, 'Error retrieving customer data', 'error');
                     }
                 } else {
-                    showMessage(messageElement, 'Email o contraseña incorrectos', 'error');
+                    showMessage(messageElement, 'Incorrect email or password', 'error');
                 }
             } catch (error) {
-                console.error('Error en el proceso de login:', error);
-                showMessage(messageElement, 'Error de conexión con el servidor', 'error');
+                console.error('Login process error:', error);
+                showMessage(messageElement, 'Server connection error', 'error');
             }
         });
     }
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (!response.ok) {
-            throw new Error('Error en la respuesta del servidor');
+            throw new Error('Server response error');
         }
 
         return response.text();
@@ -95,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         if (!response.ok) {
-            throw new Error('Error al obtener datos del cliente');
+            throw new Error('Error fetching customer data');
         }
 
         return response.json();
@@ -103,15 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para guardar datos del cliente
     function saveCustomerData(customerData) {
-        // Guardamos solo la información necesaria
-        // localStorage.setItem('customerData', JSON.stringify({
-        //     id: customerData.customer_id,
-        //     email: customerData.email,
-        //     name: customerData.name,
-        //     surname: customerData.surname,
-        //     phone: customerData.phone_number,
-        //     address: customerData.address
-        // }));
         localStorage.setItem('customer_id', customerData.customer_id);
         localStorage.setItem('isLoggedIn', 'true');
     }

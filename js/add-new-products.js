@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () =>{
         const ingredientValue = ingredientInput.value.trim();
         if (ingredientValue !== ""){
             addIngredientToList(ingredientValue);
-            ingredientInput.value = ""; //limpiar el input despues de agregar 
+            ingredientInput.value = ""; 
         }
     });
 

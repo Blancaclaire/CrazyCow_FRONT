@@ -3,9 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 
-/* ====================== */
-/* GLOBAL STYLES         */
-/* ====================== */
+/* GLOBAL STYLES*/
+
 * {
   box-sizing: border-box;
 }
@@ -16,9 +15,8 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
-/* ====================== */
-/* HEADER STYLES         */
-/* ====================== */
+
+/* HEADER STYLES*/
 .main-header {
   position: relative;
   text-align: left;
@@ -101,9 +99,8 @@ body {
   transform: scale(1.1);
 }
 
-/* ====================== */
-/* NAVIGATION STYLES     */
-/* ====================== */
+
+/* NAVIGATION STYLES*/
 .nav-container {
   position: absolute;
   top: 10px;
@@ -244,9 +241,8 @@ body {
   display: block;
 }
 
-/* ====================== */
-/* TAGLINE SECTION       */
-/* ====================== */
+
+/* TAGLINE SECTION*/
 .dark-rectangle {
   width: 100%;
   height: 5vh;
@@ -271,9 +267,8 @@ body {
   font-size: 1.5rem;
 }
 
-/* ====================== */
-/* CARD SECTION          */
-/* ====================== */
+
+/* CARD SECTION */
 .card-section {
   display: flex;
   justify-content: center;
@@ -335,9 +330,8 @@ body {
   filter: drop-shadow(10px 10px 15px rgba(0, 0, 0, 0.5));
 }
 
-/* ====================== */
-/* ABOUT US SECTION      */
-/* ====================== */
+
+/* ABOUT US SECTION */
 .about-us-section {
   display: flex;
   align-items: flex-end;
@@ -378,9 +372,8 @@ body {
   margin-bottom: 20px;
 }
 
-/* ====================== */
-/* SPLIT SECTION         */
-/* ====================== */
+
+/* SPLIT SECTION */
 .split-section {
   display: flex;
   align-items: center;
@@ -448,9 +441,8 @@ body {
   filter: drop-shadow(60px -20px 20px rgba(0, 0, 0, 0.5));
 }
 
-/* ====================== */
-/* LOCATIONS SECTION     */
-/* ====================== */
+
+/* LOCATIONS SECTION*/
 .below-section {
   padding: 40px;
   background-color: white;
@@ -504,9 +496,8 @@ iframe {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
 
-/* ====================== */
-/* FOOTER STYLES         */
-/* ====================== */
+
+/* FOOTER STYLES */
 .footer {
   display: flex;
   justify-content: space-between;

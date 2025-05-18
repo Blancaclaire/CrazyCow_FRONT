@@ -1,5 +1,3 @@
-// ==================== EMPLOYEE DETAILS PAGE FUNCTIONS ====================
-
 // Ejecutar cuando el documento esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
     console.log("Employee details page initialised");
@@ -55,8 +53,7 @@ function fetchEmployeeProfile(email) {
         console.warn("Could not find .employee-info element to display upload message");
     }
     
-    // URL del API - CORREGIDO para usar el endpoint FIND_ALL que es el que está implementado 
-    // en tu backend según el código que has proporcionado
+    
     const apiUrl = `http://localhost:8080/CrazyCow_Server/Controller?ACTION=EMPLOYEE.FIND_ALL&email=${encodeURIComponent(email)}`;
     console.log("Applying for profile from:", apiUrl);
     

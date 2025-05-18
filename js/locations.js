@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const orderTypeRadios = document.querySelectorAll('input[name="orderType"]');
     const restaurantSelection = document.getElementById('restaurantSelection');

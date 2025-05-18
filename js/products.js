@@ -29,15 +29,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Load products on startup
     getListProducts();
     
-    // Set up close functionality for product detail modal
+    
     document.getElementById('closeDetail')?.addEventListener('click', function() {
         document.getElementById('productDetail').classList.remove('active');
     });
     
-    // Close detail when clicking outside the content
+    
     document.getElementById('productDetail')?.addEventListener('click', function(e) {
         if (e.target === this) {
             this.classList.remove('active');
@@ -45,10 +44,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Function to get products from the API
+
 async function getListProducts() {
     try {
-        // Show loading indicator in all grids
+        
         document.querySelectorAll('.products-grid').forEach(grid => {
             grid.innerHTML = '<div class="loading">Loading products...</div>';
         });
@@ -56,7 +55,7 @@ async function getListProducts() {
         const response = await fetch('http://localhost:8080/CrazyCow_Server/Controller?ACTION=PRODUCT.FIND_ALL');
         const data = await response.json();
         
-        // Display products in their respective categories
+        
         displayProductsByCategory(data);
     } catch (error) {
         console.error('Error loading products:', error);
@@ -66,14 +65,14 @@ async function getListProducts() {
     }
 }
 
-// Display products organized by category
+
 function displayProductsByCategory(products) {
-    // Clear all grids first
+    
     document.querySelectorAll('.products-grid').forEach(grid => {
         grid.innerHTML = '';
     });
     
-    // Check if there are products
+    
     if (!products || products.length === 0) {
         document.querySelectorAll('.products-grid').forEach(grid => {
             grid.innerHTML = '<div class="no-products">No products available</div>';
@@ -81,11 +80,11 @@ function displayProductsByCategory(products) {
         return;
     }
     
-    // Group products by category
+    
     products.forEach(product => {
         let targetGrid;
         
-        // Determine which grid the product belongs to based on category_id
+        
         if (product.category_id === 1000) {
             targetGrid = 'burgersGrid';
         } else if (product.category_id === 1001) {
@@ -95,20 +94,20 @@ function displayProductsByCategory(products) {
         } else if (product.category_id === 1003) {
             targetGrid = 'dessertsGrid';
         } else {
-            // Default fallback (opcional)
-            targetGrid = 'bittingsGrid'; // o cualquier otro por defecto
+            
+            targetGrid = 'bittingsGrid';
         }
         
-        // Create and add the product element to the appropriate grid
+        
         createProductElement(product, targetGrid);
     });
 }
 
-// Create product element and add it to the corresponding grid
+
 function createProductElement(product, gridId) {
     const grid = document.getElementById(gridId);
     
-    // If the grid doesn't exist, exit
+    
     if (!grid) return;
     
     const productElement = document.createElement('div');
@@ -123,7 +122,7 @@ function createProductElement(product, gridId) {
         </a>
     `;
     
-    // Add click event to show details
+    
     productElement.querySelector('a').addEventListener('click', function(e) {
         e.preventDefault();
         showProductDetails(product);
@@ -132,12 +131,12 @@ function createProductElement(product, gridId) {
     grid.appendChild(productElement);
 }
 
-// Show product details in modal
+
 function showProductDetails(product) {
     const detailTitle = document.getElementById('detailTitle');
     const detailBody = document.getElementById('detailBody');
     
-    // Set the title
+    
     detailTitle.textContent = product.product_name;
     
     // Determinar la categoría del producto basado en su category_id
@@ -152,7 +151,7 @@ function showProductDetails(product) {
         productType = 'forBitting';
     }
     
-    // Create the detail content
+    
     detailBody.innerHTML = `
         <div class="detail-image">
             <img src="../imagenes/${product.image}" alt="${product.product_name}" 
@@ -193,6 +192,6 @@ function showProductDetails(product) {
         document.getElementById('productDetail').classList.remove('active');
     });
     
-    // Show the modal
+    
     document.getElementById('productDetail').classList.add('active');
 }

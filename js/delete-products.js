@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Manejar envío del formulario (eliminar producto)
+    // Manejar envío del formulario
     deleteForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
