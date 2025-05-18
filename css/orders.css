@@ -1,0 +1,211 @@
+/* Estilos Generales */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #EDE6EF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #52375b;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Contenedor Principal */
+.container {
+    background: white;
+    border: 4px solid #52375b;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+/* Tarjetas de Pedidos */
+.order-card {
+    background: white;
+    border: 2px solid #52375b;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px dashed #EDE6EF;
+}
+
+.order-header h3 {
+    margin: 0;
+    color: #52375b;
+    font-size: 1.4rem;
+}
+
+/*  Estados de Pedido */
+.status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+}
+
+.status.delivered {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+.status.pending {
+    background-color: #fff8e1;
+    color: #ff8f00;
+    border: 1px solid #ffe082;
+}
+
+.status.cancelled {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+
+/* ===== Detalles del Pedido ===== */
+.order-body p {
+    margin: 8px 0;
+    color: #555;
+    font-size: 1rem;
+}
+
+.order-body strong {
+    color: #52375b;
+    min-width: 100px;
+    display: inline-block;
+}
+
+.order-details {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border-left: 4px solid #52375b;
+}
+
+.order-details h4 {
+    margin-top: 0;
+    color: #52375b;
+    font-size: 1.1rem;
+}
+
+.order-details ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+.order-details li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-details li:last-child {
+    border-bottom: none;
+}
+
+/* Botones y Mensajes */
+.bt-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5em 1.2em;
+    color: #52375b;
+    border: 2px solid #52375b;
+    background-color: transparent;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+.bt-back:hover {
+    background-color: #52375b;
+    color: white;
+}
+
+.loading {
+    text-align: center;
+    color: #52375b;
+    font-size: 1.2rem;
+    padding: 30px;
+}
+
+.no-orders {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 30px;
+    font-size: 1.1rem;
+}
+
+.error-message {
+    color: #d9534f;
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #fde8e8;
+    border-radius: 8px;
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .order-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .status {
+        margin-top: 10px;
+        align-self: flex-end;
+    }
+}

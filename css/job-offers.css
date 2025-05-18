@@ -1,4 +1,4 @@
-/* Contenedor principal */
+/* CONTENEDOR PRINCIPAL */
 .container {
     width: 80%;
     max-width: 1200px;
@@ -6,7 +6,7 @@
     text-align: center;
 }
 
-/* Título central */
+/* TÍTULO PRINCIPAL */
 .central-title {
     font-size: 2.5rem;
     margin: 20px 0;
@@ -14,6 +14,7 @@
     font-family: 'Playfair', serif;
 }
 
+/* TARJETAS DE CONTENIDO */
 .rectangle {
     display: flex;
     justify-content: space-between;
@@ -37,12 +38,13 @@
     border-color: #52375b;
 }
 
-/* Contenido de los rectángulos */
+/* CONTENIDO DE LAS TARJETAS */
 .content {
     text-align: left;
     flex: 1;
 }
 
+/* VARIANTES DE TEXTO */
 .text {
     margin: 10px 0;
     color: gray;
@@ -64,7 +66,7 @@
     font-family: 'Lato', sans-serif;
 }
 
-/* Botón */
+/* BOTONES */
 .button {
     display: flex;
     align-items: center;
@@ -88,7 +90,7 @@
     transform: scale(1.05);
 }
 
-/* Filtros */
+/* SECCIÓN DE FILTROS */
 .filter-section {
     margin: 30px auto;
     padding: 20px;
@@ -115,12 +117,14 @@
     font-family: 'Lato', sans-serif;
 }
 
+/* CONTENEDOR DE BOTONES */
 .button-container {
     display: flex;
     justify-content: center;
     margin-top: 15px;
 }
 
+/* MENSAJES DE ESTADO */
 .loading {
     font-family: 'Lato', sans-serif;
     color: #52375b;

@@ -1,8 +1,8 @@
-/* delete-products.css */
-/* FUENTES */
+/* FUENTES EXTERNAS */
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 
+/* RESET Y ESTILOS BASE */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -17,6 +17,7 @@ body {
     background-color: #EDE6EF;
 }
 
+/* HEADER Y NAVEGACIÓN */
 header {
     display: flex;
     justify-content: space-between;
@@ -40,6 +41,7 @@ header a {
     font-family: "Playfair", serif;
 }
 
+/* BOTONES */
 .bt-back {
     display: flex;
     position: relative;
@@ -63,7 +65,7 @@ header a {
     transition: all 0.3s ease-in-out;
 }
 
-/* TITLE-PAGE */
+/* TÍTULOS */
 .title-page {
     text-align: center;
     font-family: "Playfair",sans-serif;
@@ -73,6 +75,7 @@ header a {
     color: #52375b;
 }
 
+/* FORMULARIO */
 .modern-form {
     width: 70vw;
     max-width: 100%;
@@ -89,6 +92,7 @@ header a {
     margin-bottom: 5vh;
 }
 
+/* ELEMENTOS DEL FORMULARIO */
 .input-group {
     margin-bottom: 16px;
 }
@@ -111,6 +115,7 @@ header a {
     background-color: white;
 }
 
+/* PREVISUALIZACIÓN DE PRODUCTO */
 .product-preview {
     display: none;
     margin-top: 20px;
@@ -145,6 +150,7 @@ header a {
     font-family: "Lato", sans-serif;
 }
 
+/* BOTONES DE ACCIÓN */
 .bt {
     display: flex;
     justify-content: center;
@@ -164,16 +170,13 @@ header a {
     width: 100%;
 }
 
-.bt:hover {
+.bt:hover, .delete-button:hover {
     background-color: #52375b;
     color: white;
     transition: all 0.3s ease-in-out;
 }
 
-.delete-button:hover {
-    background-color: #52375b;
-}
-
+/* MENSAJES DE ESTADO */
 .success-message {
     display: none;
     background-color: #d4edda;

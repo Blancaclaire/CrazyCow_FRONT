@@ -163,7 +163,7 @@ function showProductDetails(product) {
             <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">Precio: <strong style="color: #663399;">€${parseFloat(product.price).toFixed(2)}</strong></p>
             <p style="margin-bottom: 1rem;">${product.description || 'No hay descripción disponible para este producto.'}</p>
             <button class="add-to-cart-btn" 
-                    data-id="${product.id}" 
+                    data-id="${product.product_id}" 
                     data-name="${product.product_name}" 
                     data-price="${product.price}" 
                     data-image="${product.image}" 

@@ -10,11 +10,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Luckiest+Guy&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Luckiest+Guy&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap"
+        rel="stylesheet">
     <link rel="shortcut icon" href="../imagenes/fav-icon.png">
     <link rel="icon" href="../imagenes/fav-icon.png">
-    
+
     <script src="../js/register.js"></script>
 </head>
 
@@ -23,62 +27,63 @@
 
     <div class="container">
         <h1>Job Offer Registration</h1>
-        
+
         <div class="job-title">
             <h2>Full Stack Web Developer</h2>
         </div>
-        
+
         <div id="successMessage" class="success-message">
             Your application has been sent successfully! We will contact you soon.
         </div>
-        
+
         <form id="jobApplicationForm">
             <input type="hidden" id="job_id" name="job_id" value="12345">
-            
+
             <div class="two-columns">
                 <div class="form-group">
                     <label for="name" class="required-field">Name</label>
                     <input type="text" id="name" name="name" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="surname" class="required-field">Surname</label>
                     <input type="text" id="surname" name="surname" required>
                 </div>
             </div>
-            
+
             <div class="two-columns">
                 <div class="form-group">
                     <label for="email" class="required-field">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="phone_number" class="required-field">Phone Number</label>
                     <input type="tel" id="phone_number" name="phone_number" required>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <label for="address" class="required-field">Address</label>
                 <input type="text" id="address" name="address" required>
             </div>
-            
+
             <div class="form-group">
                 <label for="resume" class="required-field">Resume (PDF o DOCX)</label>
                 <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
                 <p class="form-note">Please upload your CV in PDF or Word format.</p>
             </div>
-            
+
             <div class="form-group">
                 <label for="application_date" class="required-field">Date of Application</label>
                 <input type="date" id="application_date" name="application_date" required>
             </div>
-            
+
             <div class="form-group">
                 <button type="button" id="submitBtn" class="btn-submit">Send Application</button>
             </div>
         </form>
     </div>
 </body>
+
 </html>

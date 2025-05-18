@@ -1,8 +1,8 @@
-/* FUENTES */
+/* FUENTES EXTERNAS */
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 
-
+/* RESET Y ESTILOS BASE */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -14,23 +14,22 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Lato", sans-serif;
-    background-color: #fff9e6;
-    background-color:#EDE6EF;
+    background-color: #EDE6EF;
 }
 
-
-header{
+/* HEADER Y NAVEGACIÓN */
+header {
     display: flex;
     justify-content: space-between;
-    height: 27vh;; 
+    height: 27vh;
 }
 
-header a{
+header a {
     text-decoration: none;
     color: white;
 }
 
-.subtitle{
+.subtitle {
     display: flex;
     position: relative;
     height: 3em;
@@ -44,49 +43,48 @@ header a{
     font-family: "Playfair", serif;
 }
 
+/* BOTONES */
 .bt-back {
     display: flex;
     position: relative;
-    height: 3em;
     align-items: center;
-    justify-content: center;
-    top: 10%;
+    text-align: center;   
     right: 1.5%;
     padding: 1em;
-    font: inherit;
-    color: #551e4a;
-    border: solid 2px #551e4a;
+    color: #52375b;
+    border: solid 2px #52375b;
     background-color: transparent;
     text-decoration: none;
     border-radius: 50px;
-
+    height: 3em;
+    margin-top: 2vh;
+    font-size: 2vh;
 }
 
-.bt-back:hover{
-    background-color: #551e4a;
+.bt-back:hover {
+    background-color: #52375b;
     color: white;
     transition: all 0.3s ease-in-out;
 }
 
-
-main{
+/* CONTENIDO PRINCIPAL */
+main {
     display: flex;
     justify-content: center;
 }
 
+/* CONTENEDOR DE BOTONES */
 .container-buttons {
-    
     display: flex;
     flex-direction: column;
     position: relative;
     justify-content: space-between;
     gap: 3em;
     height: 50vh;
-
-    
 }
 
-.buttons{
+/* ESTILOS DE BOTONES */
+.buttons {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,7 +96,6 @@ main{
     color: white;
     background-color: transparent;
     border-radius: 50px;
-    
 }
 
 .buttons a {
@@ -111,80 +108,54 @@ main{
     padding: 1em;
     width: 80vw;   
     border-radius: 30px;
-    background-color:#551e4a ;
+    background-color: #551e4a;
     transition: all 0.3s ease-in-out;
-    
 }
 
-.buttons a:hover{
+.buttons a:hover {
     background-color: transparent;
-    color:#551e4a;
+    color: #551e4a;
     border: solid 2px #551e4a;
-
 }
 
+/* CONTENEDOR DE BOTONES MEJORADO PARA MÓVIL */
 @media (max-width: 390px) {
-    
-    .subtitle {
-        order: 2; 
-        font-size: 1em;
-        left: 2%;
-        margin-right: 1.2em;
-        margin-top: 1.5rem;
-    }
-
-    .bt-back {
-        order: 1; 
-        margin-left: 1em;
-        font-size: 0.9em;
-    
-    }
     .container-buttons {
-    
         display: flex;
         flex-direction: column;
-        position: relative;
-        justify-content: space-between;
-        gap: 8em;
-        height: 10vh;
-    
-        
+        gap: 1.5rem;
+        height: auto;
+        width: 90%; 
+        margin: 2rem auto; 
+        padding: 1rem;
+        background-color: #EDE6EF;
+        border-radius: 15px; 
     }
-    
-    .buttons{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 3em;
-        padding: 1em;
-        top: 30%;
-        right: 1.5%;
-        font: inherit;
-        color: white;
-        background-color: transparent;
-        border-radius: 50px;
-        
+
+    .buttons {
+        height: auto;
+        padding: 0;
+        margin: 0;
     }
-    
+
     .buttons a {
-        font-size: 2em;
-        padding: 1.5%;
-        text-align: center;
-        border: solid 2px white;
-        text-decoration: none;
-        color: white;
-        padding: 1em;
-        width: 80vw;   
-        border-radius: 30px;
-        background-color:#551e4a ;
-        transition: all 0.3s ease-in-out;
-        
+        font-size: 1.3rem;
+        padding: 1.2rem 1rem;
+        width: 100%;
+        border-radius: 12px; 
+        background-color: #551e4a;
+        transition: all 0.2s ease;
     }
-    
-    .buttons a:hover{
-        background-color: transparent;
-        color:#551e4a;
-        border: solid 2px #551e4a;
-    
+
+    .buttons a:hover {
+        background-color: #551e4a
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(85, 30, 74, 0.2);
+    }
+
+    /* Efecto al presionar */
+    .buttons a:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 4px rgba(85, 30, 74, 0.2);
     }
 }

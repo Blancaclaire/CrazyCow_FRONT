@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Luckiest+Guy&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Luckiest+Guy&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap"
+        rel="stylesheet">
     <link rel="shortcut icon" href="../imagenes/fav-icon.png">
     <link rel="icon" href="../imagenes/fav-icon.png">
     <script src="../js/shopping-cart.js"></script>
-    <!-- Scripts reorganizados y optimizados -->
+    <script src="../js/locations.js"></script>
+    <script src="../js/styles-general.js"></script>
 </head>
 
 <body>
@@ -22,19 +28,18 @@
         <div class="header-left">
         </div>
         <nav class="nav-container">
-            <!-- Botón hamburguesa para móviles -->
             <button class="nav-toggle" id="navToggle">
                 <span class="hamburger"></span>
             </button>
 
-            <!-- Menú principal -->
+
             <ul id="navMenu">
                 <li><a href="../html/index.html#restaurants" class="nav-button">Restaurants</a></li>
                 <li><a href="../html/products-menu.html" class="nav-button">Menu</a></li>
                 <li><a href="../html/work-with-us.html" class="nav-button">Work with us</a></li>
                 <li><a href="../imagenes/menu-CrazyCow.pdf" class="nav-button">Menu card</a></li>
 
-                <!-- Carrito de compras -->
+
                 <li class="cart-item">
                     <a href="../html/shopping-cart.html" class="basket-button">
                         <img src="../imagenes/shopping-bag-black.png" alt="basket" class="basket-icon">
@@ -66,6 +71,33 @@
             <a href="../html/products-menu.html" class="continue-shopping">Start Shopping</a>
         </div>
 
+
+        <!-- Nuevo bloque para selección de tipo de pedido -->
+        <div class="order-type-section" id="orderTypeSection">
+            <h3>Order Type</h3>
+            <div class="order-type-options">
+                <label class="order-type-option">
+                    <input type="radio" name="orderType" value="pickup" checked> Pick up in restaurant
+                </label>
+                <label class="order-type-option">
+                    <input type="radio" name="orderType" value="delivery"> Delivery
+                </label>
+            </div>
+
+            <div id="restaurantSelection" class="restaurant-selection">
+                <h4>Select Restaurant</h4>
+                <select id="restaurantSelect" class="form-input">
+                    <option value="10000">Crazy Cow, Los Angeles</option>
+                    <option value="10001">Crazy Cow, New York</option>
+                </select>
+            </div>
+
+            <div id="deliveryAddressSection" class="delivery-address-section" style="display: none;">
+                <h4>Delivery Address</h4>
+                <input type="text" id="deliveryAddress" class="form-input" placeholder="Enter your delivery address">
+            </div>
+        </div>
+<!-- ********************************************************** -->
         <div class="cart-summary" id="cartSummary">
             <div class="summary-row">
                 <span>Subtotal</span>
@@ -125,10 +157,8 @@
             <p class="right-text">Privacy Policy | Terms of Service</p>
         </div>
     </footer>
-    
-    <!-- Scripts reorganizados y optimizados -->
-    <script src="../js/styles-general.js"></script>
-    <script src="../js/shopping-cart.js"></script>
-    <script src="../js/products.js"></script>
+
+
 </body>
+
 </html>

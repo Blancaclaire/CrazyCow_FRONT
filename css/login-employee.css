@@ -1,4 +1,4 @@
-
+/* CONTENEDOR PRINCIPAL */
 .main-container {
     display: flex;
     width: 100%;
@@ -8,6 +8,7 @@
     padding: 20px;
 }
 
+/* SECCIÓN DE IMAGEN */
 .image-box {
     width: 50%;
     flex: 1;
@@ -27,12 +28,14 @@
     filter: drop-shadow(60px -20px 20px rgba(0, 0, 0, 0.3));
 }
 
+/* SECCIÓN DE FORMULARIO */
 .login-register {
     width: 50%;
     display: flex;
     justify-content: center;
 }
 
+/* FORMULARIO MODERNO */
 .modern-form {
     width: 350px;
     max-width: 100%;
@@ -48,6 +51,7 @@
     margin: auto;
 }
 
+/* TÍTULO DEL FORMULARIO */
 .form-title {
     font-size: 3em;
     font-weight: 600;
@@ -58,6 +62,7 @@
     font-family: 'Playfair', serif;
 }
 
+/* GRUPOS DE INPUT */
 .input-group {
     margin-bottom: 16px;
 }
@@ -68,6 +73,7 @@
     align-items: center;
 }
 
+/* ESTILOS DE INPUT */
 .form-input {
     width: 100%;
     height: 40px;
@@ -79,10 +85,7 @@
     transition: all 0.2s ease;
 }
 
-.form-input::placeholder {
-    color: #999;
-}
-
+/* ICONOS Y TOGGLE */
 .input-icon {
     position: absolute;
     left: 12px;
@@ -105,11 +108,7 @@
     transition: all 0.2s ease;
 }
 
-.eye-icon {
-    width: 16px;
-    height: 16px;
-}
-
+/* BOTÓN DE ENVÍO */
 .submit-button {
     position: relative;
     width: 100%;
@@ -126,6 +125,7 @@
     transition: all 0.2s ease;
 }
 
+/* EFECTO GLOW DEL BOTÓN */
 .button-glow {
     position: absolute;
     inset: 0;
@@ -137,6 +137,7 @@
     transition: transform 0.5s ease;
 }
 
+/* PIE DE FORMULARIO */
 .form-footer {
     margin-top: 16px;
     text-align: center;
@@ -149,12 +150,7 @@
     transition: all 0.2s ease;
 }
 
-.login-link span {
-    color: #52375b;
-    font-weight: 500;
-}
-
-/* Hover & Focus States */
+/* ESTADOS HOVER Y FOCUS */
 .form-input:hover {
     border-color: #cbd5e1;
 }
@@ -186,11 +182,7 @@
     color: #333;
 }
 
-.login-link:hover span {
-    color: #3c2943;
-}
-
-/* Active States */
+/* ESTADOS ACTIVOS */
 .submit-button:active {
     transform: translateY(0);
     box-shadow: none;
@@ -200,7 +192,7 @@
     transform: scale(0.9);
 }
 
-/* Validation States */
+/* VALIDACIÓN DE FORMULARIO */
 .form-input:not(:placeholder-shown):valid {
     border-color: #52375b;
 }
@@ -209,7 +201,12 @@
     color: #52375b;
 }
 
-/* Animation */
+.form-input:not(:placeholder-shown):invalid {
+    border-color: #ff6b6b;
+    animation: shake 0.2s ease-in-out;
+}
+
+/* ANIMACIONES */
 @keyframes shake {
 
     0%,
@@ -226,16 +223,7 @@
     }
 }
 
-.form-input:not(:placeholder-shown):invalid {
-    border-color: #ff6b6b;
-    animation: shake 0.2s ease-in-out;
-}
-
-.form-input:not(:placeholder-shown):invalid~.input-icon {
-    color: #ff6b6b;
-}
-
-/* Contenedor centrado */
+/* BOTÓN DE RETORNO */
 .center-container {
     display: flex;
     justify-content: center;
@@ -243,7 +231,6 @@
     padding: 20px;
 }
 
-/* Botón estilizado */
 .back-button {
     display: inline-block;
     padding: 15px 30px;
@@ -258,19 +245,18 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.back-button:hover {
-    background-color: #EDE6EF;
-    transform: scale(1.05);
-}
-
-
-
-
+/* DISEÑO RESPONSIVE */
 @media (max-width: 768px) {
-    .nav-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .main-container {
+        flex-direction: column;
+    }
+
+    .image-box {
+        display: none;
+    }
+
+    .login-register {
+        width: 100%;
     }
 
     .nav-container ul {
@@ -294,31 +280,6 @@
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
-    }
-
-    .nav-container li {
-        margin: 10px 0;
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-button {
-        margin: 5px 0;
-        display: block;
-        width: 100%;
-    }
-
-    .main-container {
-        flex-direction: column;
-    }
-
-    .image-box {
-        display: none;
-        /* Ocultar la imagen en pantallas pequeñas */
-    }
-
-    .login-register {
-        width: 100%;
     }
 }
 

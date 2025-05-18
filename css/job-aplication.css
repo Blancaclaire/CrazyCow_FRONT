@@ -1,6 +1,4 @@
-
-
-/* Contenedor principal centrado */
+/* CONTENEDOR PRINCIPAL */
 .centered-container {
     display: flex;
     flex-direction: column;
@@ -10,14 +8,13 @@
     text-align: center;
 }
 
-
-
+/* IMAGEN PRINCIPAL */
 .main-image {
     width: 60%;
     height: auto;
 }
 
-/* Título centrado */
+/* TÍTULO CENTRAL */
 .central-title {
     font-size: 3rem;
     color: #52375b;
@@ -25,21 +22,22 @@
     font-family: 'Playfair', serif;
 }
 
-/* Contenedor de columnas */
+/* ESTRUCTURA DE COLUMNAS */
 .columns {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-/* Columna izquierda */
+/* COLUMNA IZQUIERDA */
 .left-column {
     width: 30%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra horizontalmente el contenido */
+    align-items: center;
 }
 
+/* BOTONES */
 .button {
     display: flex;
     align-items: center;
@@ -63,6 +61,7 @@
     transform: scale(1.05);
 }
 
+/* ELEMENTOS CON ICONOS */
 .text-with-icon {
     display: flex;
     align-items: center;
@@ -74,6 +73,7 @@
     width: 4%;
 }
 
+/* CAJAS DE CONTENIDO */
 .boxes {
     display: flex;
     flex-direction: column;
@@ -82,7 +82,6 @@
     width: 100%;
     padding: 10px;
 }
-
 
 .box {
     background-color: white;
@@ -93,6 +92,7 @@
     text-align: left;
 }
 
+/* ENLACES SOCIALES */
 .social-link {
     text-decoration: none;
     margin: 10px 0;
@@ -100,40 +100,74 @@
     font-family: 'Lato', sans-serif;
     font-size: 1rem;
     transition: color 0.3s ease;
-  }
-  
-  .social-icon {
-    width: 30px;
-    height: auto;
-  }
-
-/* Columna derecha */
-.right-column {
-    width: 50%;
-    text-align: left; /* Alinea el texto dentro */
 }
 
+.social-icon {
+    width: 30px;
+    height: auto;
+}
+
+/* COLUMNA DERECHA */
+.right-column {
+    width: 50%;
+    text-align: left;
+}
+
+/* TÍTULOS Y TEXTO */
 .title-text {
     margin-bottom: 20px;
-    font-family: 'lato', sans-serif;
+    font-family: 'Lato', sans-serif;
 }
 
 .title-text h2 {
     font-size: 1.5rem;
     color: #52375b;
-    font-family: 'lato', sans-serif;
 }
 
 .title-text p {
     margin: 5px 0;
     color: #333;
-    font-family: 'lato', sans-serif;
 }
 
+/* DISEÑO RESPONSIVE */
 
+/* Tabletas y pantallas medianas */
+@media (max-width: 992px) {
+    .footer-left,
+    .footer-center,
+    .footer-right {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 
+    .footer-right {
+        justify-content: center;
+    }
 
-/* Media query para dispositivos móviles */
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Tabletas pequeñas */
+@media (max-width: 900px) {
+    .main-image {
+        width: 80%;
+    }
+    
+    .central-title {
+        font-size: 2.5rem;
+    }
+    
+    .button {
+        width: 50%;
+    }
+}
+
+/* Móviles */
 @media (max-width: 768px) {
     .nav-toggle {
         display: block;
@@ -154,84 +188,38 @@
         align-items: center;
         transition: right 0.3s ease;
         z-index: 999;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     }
 
     .nav-container ul.active {
         right: 0;
     }
 
-    .nav-container li {
-        margin: 15px 0;
-    }
-
-    .basket-button {
-        margin: 15px 0;
-    }
-
-    /* Fondo oscuro cuando el menú está abierto */
-    .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 998;
-    }
-
-    .overlay.active {
-        display: block;
-    }
-}
-
-/* Tablet and smaller screens */
-@media (max-width: 900px) {
-    .main-image {
-        width: 80%; /* Larger image on medium screens */
-    }
-    
-    .central-title {
-        font-size: 2.5rem; /* Slightly smaller title */
-    }
-    
-    .button {
-        width: 50%; /* Wider buttons */
-    }
-}
-
-/* Mobile screens */
-@media (max-width: 768px) {
     .centered-container {
-        padding: 20px; /* Add some padding */
+        padding: 20px;
     }
     
     .main-image {
-        width: 90%; /* Even larger relative image size */
+        width: 90%;
     }
     
     .central-title {
-        font-size: 2rem; /* Smaller title for mobile */
+        font-size: 2rem;
     }
     
-    /* Stack columns vertically */
     .columns {
         flex-direction: column;
         gap: 30px;
     }
     
     .left-column, .right-column {
-        width: 100%; /* Full width on mobile */
+        width: 100%;
     }
     
-    /* Button adjustments */
     .button {
         width: 60%;
         padding: 15px;
     }
     
-    /* Social icons alignment */
     .social-icons {
         display: flex;
         justify-content: center;
@@ -239,62 +227,28 @@
         margin-top: 20px;
     }
     
-    /* Text adjustments */
     .title-text h2 {
         text-align: center;
     }
     
-    /* Box layout improvements */
     .boxes {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 10px;
     }
-    
-    /* Make sure list items display properly */
-    .right-column li {
-        margin-left: 20px;
-    }
 }
 
-/* Extra small screens */
+/* Móviles pequeños */
 @media (max-width: 480px) {
     .central-title {
-        font-size: 1.7rem; /* Even smaller title */
+        font-size: 1.7rem;
     }
     
     .boxes {
-        grid-template-columns: 1fr; /* Stack boxes on very small screens */
+        grid-template-columns: 1fr;
     }
     
     .button {
-        width: 80%; /* Wider buttons on small screens */
-    }
-}
-
-  /* Media queries para hacer la página responsive */
-  @media (max-width: 992px) {
-
-    .footer-left,
-    .footer-center,
-    .footer-right {
-        width: 100%;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .footer-right {
-        justify-content: center;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .left-text,
-    .right-text {
-        text-align: center;
+        width: 80%;
     }
 }
