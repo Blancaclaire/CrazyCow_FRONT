@@ -1,159 +1,4 @@
-/* =======================
-   GENERAL STYLES
-======================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
-}
 
-body {
-  background-color: white;
-  line-height: 1.6;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Luckiest Guy', cursive;
-  color: #5d2d5d;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* =======================
-   HEADER
-======================= */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 5%;
-  background-color: white;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-}
-
-.nav-container {
-  display: flex;
-  align-items: center;
-}
-
-.nav-container ul {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-  align-items: center;
-}
-
-.nav-button {
-  position: relative;
-  padding: 8px 15px;
-  font-weight: bold;
-  color: #5d2d5d;
-  border-radius: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.nav-button:hover {
-  background-color: #f0e6f5;
-}
-
-.nav-button:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 0;
-  height: 3px;
-  background-color: #9b8bb4;
-  transition: width 0.3s ease;
-}
-
-.nav-button:hover:after {
-  width: 100%;
-}
-
-.basket-button {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  position: relative;
-}
-
-.basket-icon {
-  width: auto;
-  height: 35px;
-}
-
-.basket-count {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: #5d2d5d;
-  color: white;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 5px;
-}
-
-.hamburger {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  background-color: #5d2d5d;
-  position: relative;
-}
-
-.hamburger:before, .hamburger:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: #5d2d5d;
-}
-
-.hamburger:before {
-  top: -8px;
-}
-
-.hamburger:after {
-  bottom: -8px;
-}
-
-.overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 90;
-}
 
 /* =======================
    HERO SECTION
@@ -173,7 +18,7 @@ header {
 }
 
 .paw-image img {
-  width: 100%;
+  width: 650px;
   height: auto;
   display: block;
   margin-top: -30%;
@@ -556,8 +401,16 @@ header {
 ======================= */
 @media (max-width: 1200px) {
   .title {
-    font-size: 4rem;
+    font-size: 5rem;
   }
+
+  .paw-image img {
+  width: 650px;
+  height: auto;
+  display: block;
+  margin-top: -25%;
+  filter: drop-shadow(30px -10px 10px rgba(0, 0, 0, 0.4));
+}
   
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -566,7 +419,7 @@ header {
 
 @media (max-width: 992px) {
   .title {
-    font-size: 3.5rem;
+    font-size: 5rem;
   }
   
   .nav-button {
@@ -584,6 +437,24 @@ header {
   
   .tab-content h1 {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .paw-image img {
+    display: none;
+}
+
+.hero {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: right;
+}
+  
+.title {
+    font-size: 7rem;
   }
 }
 
@@ -698,13 +569,14 @@ header {
   }
   
   .title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
   }
   
-  .paw-image {
-    width: 40%;
-    max-width: 180px;
-  }
+  
+
+  .paw-image img {
+  display: none;
+}
   
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));

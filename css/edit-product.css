@@ -1,4 +1,4 @@
-/* FUENTES */
+/* FUENTES EXTERNAS */
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
 
@@ -39,6 +39,7 @@ header a {
     font-weight: 700;
 }
 
+/* BOTONES */
 .bt-back {
     display: inline-flex;
     align-items: center;
@@ -88,6 +89,7 @@ main {
     margin: 0 auto 3rem;
 }
 
+/* GRUPOS DE INPUT */
 .input-group {
     margin-bottom: 1.5rem;
 }
@@ -112,12 +114,6 @@ main {
     color: #333;
     transition: all 0.3s ease;
     background-color: #fff;
-}
-
-.form-input::placeholder,
-.form-textarea::placeholder {
-    color: #999;
-    opacity: 1;
 }
 
 .form-textarea {
@@ -170,6 +166,7 @@ main {
     animation: fadeIn 0.3s ease;
 }
 
+/* BOTONES DE ACCIÓN */
 .delete-button {
     background: none;
     border: none;
@@ -228,12 +225,6 @@ main {
     background-color: rgba(85, 30, 74, 0.05);
 }
 
-.upload-icon {
-    width: 24px;
-    height: 24px;
-    color: #52375b;
-}
-
 .preview-container {
     margin-top: 1rem;
     text-align: center;
@@ -248,7 +239,7 @@ main {
     display: none;
 }
 
-/* BOTONES */
+/* BOTÓN PRINCIPAL */
 .bt {
     display: inline-flex;
     justify-content: center;
@@ -273,7 +264,7 @@ main {
     box-shadow: 0 4px 8px rgba(85, 30, 74, 0.2);
 }
 
-/* MENSAJES */
+/* MENSAJES DE ESTADO */
 .success-message,
 .error-message {
     padding: 1rem;
@@ -304,7 +295,7 @@ main {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* RESPONSIVE */
+/* DISEÑO RESPONSIVE */
 @media (max-width: 768px) {
     .title-page {
         font-size: 2rem;
@@ -320,9 +311,7 @@ main {
         padding: 1rem;
     }
     
-    .bt-back {
-        width: 100%;
-    }
+    
 }
 
 @media (max-width: 480px) {

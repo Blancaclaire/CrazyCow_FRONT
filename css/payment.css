@@ -3,16 +3,17 @@
 
 body {
     font-family: 'Lato', sans-serif;
-    background-color: #f9f9f9;
+    background-color: white;
     margin: 0;
     padding: 0;
 }
 
 .dark-rectangle {
-    background-color: #333;
+    background-color: #52375b;
     color: white;
     padding: 20px 0;
     text-align: center;
+    justify-content: center;
     margin-bottom: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -22,6 +23,7 @@ body {
     margin: 0;
     font-size: 2.5rem;
     letter-spacing: 1px;
+
 }
 
 .login-register {
@@ -38,10 +40,10 @@ body {
 }
 
 .form-title {
-    background-color: #f5623d;
+    background-color: #52375b;
     color: white;
     padding: 15px 20px;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     font-weight: bold;
     text-align: center;
     font-family: 'Playfair', serif;
@@ -49,6 +51,9 @@ body {
 
 .form-body {
     padding: 20px;
+    border: #52375b 3px solid;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .input-group {
@@ -63,7 +68,7 @@ body {
     width: 100%;
     padding: 15px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 1rem;
     box-sizing: border-box;
     transition: border-color 0.3s;
@@ -99,6 +104,7 @@ select.form-input {
 .error-message {
     color: #e74c3c;
     font-size: 0.85rem;
+    font-family: 'Lato', sans-serif;
     margin-top: 5px;
     display: none;
 }
@@ -114,10 +120,11 @@ select.form-input {
 }
 
 .rounded-banner {
-    background-color: #333;
+    background-color: #52375b;
     color: white;
+    border: #52375b 3px solid;
     padding: 15px 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -144,39 +151,47 @@ select.form-input {
 }
 
 .center-button {
-    background-color: #f5623d;
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    box-shadow: 0 4px 8px rgba(245, 98, 61, 0.3);
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: white;
+    color: #52375b;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-family: 'Lato', sans-serif;
+    border-radius: 10px;
+    border: 2px solid #52375b;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .center-button:hover {
-    background-color: #e04f2f;
+    background-color: #52375b;
+    color: white;
 }
 
 .center-button:active {
     transform: translateY(2px);
 }
 
+/* Botón estilizado */
 .back-button {
     display: inline-block;
-    color: #666;
+    padding: 15px 30px;
+    background-color: white;
+    color: #52375b;
     text-decoration: none;
-    font-size: 1rem;
-    margin-top: 10px;
-    transition: color 0.3s;
+    font-size: 1.2rem;
+    font-family: 'Lato', sans-serif;
+    border-radius: 10px;
+    border: 2px solid #52375b;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .back-button:hover {
-    color: #f5623d;
+    background-color: #EDE6EF;
+    transform: scale(1.05);
 }
-
 /* Card type indicator styles */
 .card-type {
     position: absolute;

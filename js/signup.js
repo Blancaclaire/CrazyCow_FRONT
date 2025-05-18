@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 
+>>>>>>> 84dec78168f47a40e693541fe66c1bb899d51aef
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.modern-form');
     const notification = document.createElement('div');
