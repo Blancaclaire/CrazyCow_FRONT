@@ -58,7 +58,7 @@
                     <div class="rectangle" onclick="viewOfferDetails(${offer.id})">
                         <div class="content">
                             <h3 class="text3">${offer.title || 'Job offer'}</h3>
-                            <p class="text2"><strong>Description:</strong> ${offer.description || 'No hay descripción disponible'}</p>
+                            <p class="text2"><strong>Description:</strong> ${offer.descriptioin || 'No hay descripción disponible'}</p>
                             <p class="text2"><strong>Location:</strong> ${offer.location || 'No especificada'}</p>
                         </div>
                     </div>
