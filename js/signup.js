@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('.modern-form');
     const notification = document.createElement('div');

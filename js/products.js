@@ -114,7 +114,7 @@ function createProductElement(product, gridId) {
     const productElement = document.createElement('div');
     productElement.className = 'product-item';
     productElement.innerHTML = `
-        <a href="#" data-product-id="${product.id}">
+        <a href="#" data-product-id="${product.product_id}">
             <img src="../imagenes/${product.image}" alt="${product.product_name}" onerror="this.src='../imagenes/placeholder.png'">
             <div class="product-info">
                 <h3>${product.product_name}</h3>
@@ -169,6 +169,9 @@ function showProductDetails(product) {
                     data-image="${product.image}" 
                     data-description="${product.description || ''}" 
                     data-type="${productType}" 
+
+
+                    
                     style="background-color: #9b8bb4; color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: bold;">
                 Añadir al carrito
             </button>
