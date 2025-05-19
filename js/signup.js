@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             
             const params = new URLSearchParams(formData);
-            const url = `http://localhost:8080/CrazyCow_Server/Controller?${params.toString()}`;
+            const url = `http://localhost:8080/api/Controller?${params.toString()}`;
             
             
             const response = await fetch(url, { method: 'POST' });
