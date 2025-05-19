@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (categoryId) {
             try {
                 // Construir URL para obtener productos
-                let url = new URL("http://localhost:8080//api/Controller?ACTION=PRODUCT.FIND_ALL", window.location.origin);
+                let url = new URL("http://localhost:8080/api/Controller?ACTION=PRODUCT.FIND_ALL", window.location.origin);
                 url.searchParams.append("category_id", categoryId);
 
                 // Realizar petición al servidor
