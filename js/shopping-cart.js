@@ -213,10 +213,10 @@ function renderCart() {
         
         // Nombres amigables para las categorías
         const categoryNames = {
-            'burgers': 'Hamburguesas',
-            'desserts': 'Postres',
-            'drinks': 'Bebidas',
-            'forBitting': 'Acompañamientos'
+            'burgers': 'Burgers',
+            'desserts': 'Desserts',
+            'drinks': 'Drinks',
+            'forBitting': 'ForBitting'
         };
         
         categoryHeader.textContent = categoryNames[category] || category;
@@ -235,7 +235,7 @@ function renderCart() {
                 <div class="menu-controls">
                     <div class="menu-total">${formatPrice(item.price * item.quantity)}</div>
                     <div class="remove-control">
-                        <button class="remove-btn" data-index="${item.originalIndex}">Eliminar</button>
+                        <button class="remove-btn" data-index="${item.originalIndex}">Delete</button>
                     </div>
                     <div class="quantity-control">
                         <button class="quantity-btn decrease" data-index="${item.originalIndex}">-</button>
@@ -341,7 +341,7 @@ function addToCart(product) {
         renderCart();
     }
     
-    showNotification(`${product.name} añadido al carrito!`);
+    showNotification(`${product.name} Added to cart!`);
 }
 
 // Función para vaciar el carrito
@@ -354,7 +354,7 @@ function clearCart() {
         renderCart();
     }
     
-    showNotification('Carrito vaciado');
+    showNotification('Emptied cart');
 }
 
 //Funcion para transformar el carrito a un formato específico
@@ -368,216 +368,3 @@ function getOrderDetailsFormat() {
     
     return orderDetails;
 }
-
-
-
-
-
-
-/*
-
-
-// Inicializar la página de pago
-function initPaymentPage() {
-    // Verificar si el usuario está logueado
-    if (!checkUserLoginStatus()) {
-        alert('Debes iniciar sesión para proceder al pago');
-        window.location.href = '../html/login.html';
-        return;
-    }
-    
-    // Verificar si hay datos de compra
-    if (!localStorage.getItem('totalPrice') || !localStorage.getItem('cartItems')) {
-        alert('No hay información de compra. Por favor, regresa al carrito.');
-        window.location.href = '../html/shopping-cart.html';
-        return;
-    }
-
-    // Obtener datos del localStorage
-    const totalPrice = localStorage.getItem('totalPrice') || '0.00';
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const customerId = localStorage.getItem('customerId') || '0';
-    const restaurantId = localStorage.getItem('restaurantId') || '0';
-    const location = localStorage.getItem('deliveryLocation') || '';
-    
-    // Actualizar el precio total mostrado
-    const dynamicText = document.getElementById('dynamic-text');
-    if (dynamicText) {
-        dynamicText.textContent = `${parseFloat(totalPrice).toFixed(2)}`;
-    }
-    
-    // Configurar elementos del formulario de pago
-    setupPaymentForm();
-}
-
-// Configurar formulario de pago
-function setupPaymentForm() {
-    const cardNumberInput = document.getElementById('card-number');
-    const cardTypeSelect = document.getElementById('card-type');
-    const cvvInput = document.getElementById('cvv');
-    const payButton = document.getElementById('pay-button');
-    
-    if (!cardNumberInput || !cardTypeSelect || !cvvInput || !payButton) return;
-    
-    // Detección automática del tipo de tarjeta
-    cardNumberInput.addEventListener('input', function() {
-        this.value = this.value.replace(/\D/g, '');
-        
-        if (this.value.length > 16) {
-            this.value = this.value.slice(0, 16);
-        }
-        
-        const cardNumber = this.value;
-        if (cardNumber.startsWith('4')) {
-            cardTypeSelect.value = "VISA";
-        } else if (cardNumber.startsWith('5')) {
-            cardTypeSelect.value = "MASTERCARD";
-        } else if (cardNumber.startsWith('3')) {
-            cardTypeSelect.value = "AMEX";
-        } else if (cardNumber.startsWith('6')) {
-            cardTypeSelect.value = "DISCOVER";
-        } else if (cardNumber.length > 0) {
-            cardTypeSelect.value = "OTHER";
-        }
-    });
-    
-    // Validación CVV
-    cvvInput.addEventListener('input', function() {
-        this.value = this.value.replace(/\D/g, '');
-        
-        const cardType = cardTypeSelect.value;
-        const maxLength = (cardType === "AMEX") ? 4 : 3;
-        
-        if (this.value.length > maxLength) {
-            this.value = this.value.slice(0, maxLength);
-        }
-    });
-    
-    // Actualizar longitud máxima del CVV cuando cambia el tipo de tarjeta
-    cardTypeSelect.addEventListener('change', function() {
-        const cardType = this.value;
-        const cvvMaxLength = (cardType === "AMEX") ? 4 : 3;
-        cvvInput.setAttribute('maxlength', cvvMaxLength);
-        
-        if (cvvInput.value.length > cvvMaxLength) {
-            cvvInput.value = cvvInput.value.slice(0, cvvMaxLength);
-        }
-    });
-    
-    // Manejar el envío del pago
-    payButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        processPayment();
-    });
-}
-
-// Procesar el pago
-function processPayment() {
-    // Elementos del formulario
-    const holderName = document.getElementById('holder-name').value.trim();
-    const cardNumber = document.getElementById('card-number').value.trim();
-    const cardType = document.getElementById('card-type').value;
-    const cvv = document.getElementById('cvv').value.trim();
-    const payButton = document.getElementById('pay-button');
-    
-    // Validar formulario
-    let isValid = validatePaymentForm(holderName, cardNumber, cardType, cvv);
-    
-    if (!isValid) return;
-    
-    // Obtener datos necesarios para el pedido
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const totalPrice = localStorage.getItem('totalPrice') || '0.00';
-    const customerId = localStorage.getItem('customerId') || '0';
-    const restaurantId = localStorage.getItem('restaurantId') || '0';
-    const location = localStorage.getItem('deliveryLocation') || '';
-    
-    // Preparar detalles del pedido
-    let orderDetailsString = cartItems.map(item => `${item.id}:${item.quantity}`).join(',');
-    
-    // Mostrar estado de procesamiento
-    const originalButtonText = payButton.textContent;
-    payButton.textContent = "Procesando...";
-    payButton.disabled = true;
-    
-    // Crear URL para la API
-    const url = new URL('/CrazyCow_Server/Controller', window.location.origin);
-    url.searchParams.append('ACTION', 'ORDER.ADD');
-    url.searchParams.append('customer_id', customerId);
-    url.searchParams.append('restaurant_id', restaurantId);
-    url.searchParams.append('order_status', 'Preparation');
-    url.searchParams.append('total', totalPrice);
-    url.searchParams.append('location', location);
-    url.searchParams.append('order_details', orderDetailsString);
-    url.searchParams.append('holder_name', holderName);
-    url.searchParams.append('holder_number', cardNumber);
-    url.searchParams.append('cvv', cvv);
-    url.searchParams.append('card_type', cardType);
-    
-    // Enviar pedido al servidor
-    fetch(url, { method: 'GET' })
-    .then(response => {
-        if (!response.ok) throw new Error('Error en el procesamiento del pago');
-        return response.text();
-    })
-    .then(data => {
-        if (data.includes('ERROR')) throw new Error(data);
-        
-        // Limpiar carrito después de una compra exitosa
-        localStorage.removeItem('burgerCart');
-        localStorage.removeItem('totalPrice');
-        localStorage.removeItem('cartItems');
-        
-        // Guardar confirmación y redirigir
-        localStorage.setItem('orderConfirmation', 'success');
-        window.location.href = '../html/payment-success.html';
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error en el pago: ' + error.message);
-    })
-    .finally(() => {
-        payButton.textContent = originalButtonText;
-        payButton.disabled = false;
-    });
-}
-
-// Validar formulario de pago
-function validatePaymentForm(holderName, cardNumber, cardType, cvv) {
-    let isValid = true;
-    
-    if (!holderName) {
-        document.getElementById('name-error').textContent = 'Por favor ingrese el nombre del titular';
-        document.getElementById('name-error').classList.add('visible');
-        isValid = false;
-    } else {
-        document.getElementById('name-error').classList.remove('visible');
-    }
-    
-    if (!cardNumber || cardNumber.length < 13) {
-        document.getElementById('number-error').textContent = 'Por favor ingrese un número de tarjeta válido';
-        document.getElementById('number-error').classList.add('visible');
-        isValid = false;
-    } else {
-        document.getElementById('number-error').classList.remove('visible');
-    }
-    
-    if (!cardType) {
-        document.getElementById('card-type-error').textContent = 'Por favor seleccione un tipo de tarjeta';
-        document.getElementById('card-type-error').classList.add('visible');
-        isValid = false;
-    } else {
-        document.getElementById('card-type-error').classList.remove('visible');
-    }
-    
-    const expectedCvvLength = (cardType === "AMEX") ? 4 : 3;
-    if (!cvv || cvv.length !== expectedCvvLength) {
-        document.getElementById('cvv-error').textContent = `Por favor ingrese un CVV válido de ${expectedCvvLength} dígitos`;
-        document.getElementById('cvv-error').classList.add('visible');
-        isValid = false;
-    } else {
-        document.getElementById('cvv-error').classList.remove('visible');
-    }
-    
-    return isValid;
-}*/
