@@ -54,7 +54,7 @@ function fetchEmployeeProfile(email) {
     }
     
     
-    const apiUrl = `http://localhost:8080/CrazyCow_Server/Controller?ACTION=EMPLOYEE.FIND_ALL&email=${encodeURIComponent(email)}`;
+    const apiUrl = `http://localhost:8080/api/Controller?ACTION=EMPLOYEE.FIND_ALL&email=${encodeURIComponent(email)}`;
     console.log("Applying for profile from:", apiUrl);
     
     // Realizar la petición para obtener detalles del empleado
