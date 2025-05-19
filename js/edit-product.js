@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (categoryId) {
             try {
-                const response = await fetch(`http://localhost:8080/CrazyCow_Server/Controller?ACTION=PRODUCT.FIND_ALL&category_id=${categoryId}`);
+                const response = await fetch(`http://localhost:8080/api/Controller?ACTION=PRODUCT.FIND_ALL&category_id=${categoryId}`);
                 
                 if (response.ok) {
                     const products = await response.json();
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (productId) {
             try {
-                const response = await fetch(`http://localhost:8080/CrazyCow_Server/Controller?ACTION=PRODUCT.FIND_BY_ID&product_id=${productId}`);
+                const response = await fetch(`http://localhost:8080/api/Controller?ACTION=PRODUCT.FIND_BY_ID&product_id=${productId}`);
                 
                 if (response.ok) {
                     const product = await response.json();
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             // Preparar datos para enviar al controlador
-            let url = new URL("http://localhost:8080/CrazyCow_Server/Controller?ACTION=PRODUCT.UPDATE", window.location.origin);
+            let url = new URL("http://localhost:8080/api/Controller?ACTION=PRODUCT.UPDATE", window.location.origin);
 
             // Añadir parámetros
             url.searchParams.append("product_id", productId);
