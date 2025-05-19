@@ -52,7 +52,7 @@ function initializeLoginPage() {
             mostrarInfo(mensaje, 'Authenticating...');
             
             
-            fetch(`http://localhost:8080/CrazyCow_Server/Controller?ACTION=EMPLOYEE.LOGIN&email=${encodeURIComponent(email)}&password=${encodeURIComponent(pass)}`, {
+            fetch(`http://localhost:8080/api/Controller?ACTION=EMPLOYEE.LOGIN&email=${encodeURIComponent(email)}&password=${encodeURIComponent(pass)}`, {
                 method: 'GET' // Usamos GET como espera el controlador Java
             })
             .then(res => {
