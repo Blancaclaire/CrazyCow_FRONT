@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () =>{
             });
 
             //preparar datos para enviar al controlador
-            let url = new URL("http://localhost:8080/CrazyCow_Server/Controller?ACTION=PRODUCT.ADD", window.location.origin);
+            let url = new URL("http://localhost:8080/api/Controller?ACTION=PRODUCT.ADD", window.location.origin);
 
             //añadir parametros
             url.searchParams.append("category_id", categoryId);
