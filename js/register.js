@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         try {
             
-            const response = await fetch('http://localhost:8080/CrazyCow_Server/Controller', {
+            const response = await fetch('http://localhost:8080/api/Controller', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
