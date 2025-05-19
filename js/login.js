@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para validar credenciales
     async function validateCredentials(email, password) {
-        const url = `http://localhost:8080/CrazyCow_Server/Controller?ACTION=CUSTOMER.LOGIN&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
+        const url = `http://localhost:8080/api/Controller?ACTION=CUSTOMER.LOGIN&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
         
         const response = await fetch(url, {
             method: 'GET',
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para obtener datos del cliente
     async function fetchCustomerData(email) {
-        const url = `http://localhost:8080/CrazyCow_Server/Controller?ACTION=CUSTOMER.FIND_BY_EMAIL&email=${encodeURIComponent(email)}`;
+        const url = `http://localhost:8080/api/Controller?ACTION=CUSTOMER.FIND_BY_EMAIL&email=${encodeURIComponent(email)}`;
         
         const response = await fetch(url, {
             method: 'GET',
