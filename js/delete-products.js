@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (categoryId) {
             try {
                 // Construir URL para obtener productos
-                let url = new URL("http://localhost:8080/CrazyCow_Server/Controller?ACTION=PRODUCT.FIND_ALL", window.location.origin);
+                let url = new URL("http://localhost:8080//api/Controller?ACTION=PRODUCT.FIND_ALL", window.location.origin);
                 url.searchParams.append("category_id", categoryId);
 
                 // Realizar petición al servidor
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (productId) {
             try {
                 // Construir URL para obtener detalles del producto
-                let url = new URL("http://localhost:8080/CrazyCow_Server/Controller?ACTION=PRODUCT.FIND_BY_ID", window.location.origin);
+                let url = new URL("http://localhost:8080//api/Controller?ACTION=PRODUCT.FIND_BY_ID", window.location.origin);
                 url.searchParams.append("product_id", productId);
 
                 // Realizar petición al servidor
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // Construir URL para eliminar producto
-            let url = new URL("http://localhost:8080/CrazyCow_Server/Controller?ACTION=PRODUCT.DELETE", window.location.origin);
+            let url = new URL("http://localhost:8080/api/Controller?ACTION=PRODUCT.DELETE", window.location.origin);
             url.searchParams.append("product_id", productId);
 
             // Realizar petición al servidor
