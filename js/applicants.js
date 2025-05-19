@@ -1,7 +1,7 @@
 addEventListener('DOMContentLoaded', function () {
     const contenedor = document.getElementById('contenedor');
 
-    const url = 'http://localhost:8080/CrazyCow_Server/Controller?ACTION=APPLICANT.FIND_ALL';
+    const url = 'http://localhost:8080/api/Controller?ACTION=APPLICANT.FIND_ALL';
     const baseUrl = '/imagenes/';
 
     fetch(url)
