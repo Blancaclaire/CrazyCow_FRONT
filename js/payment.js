@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
         // Construir la URL para el POST
-        const url = new URL('http://localhost:8080/CrazyCow_Server/Controller');
+        const url = new URL('http://localhost:8080/api/Controller');
         url.searchParams.append('ACTION', 'ORDER.ADD');
         url.searchParams.append('customer_id', localStorage.getItem('customer_id') || '0');
         url.searchParams.append('restaurant_id', localStorage.getItem('restaurantId') || '0');
