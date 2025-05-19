@@ -21,7 +21,7 @@ function fetchOrdersByRestaurant(restaurantId) {
         ordersContainer.innerHTML = '<p class="loading">Loading orders...</p>';
     }
 
-    const apiUrl = `http://localhost:8080/CrazyCow_Server/Controller?ACTION=ORDER.FIND_ALL&restaurant_id=${restaurantId}`;
+    const apiUrl = `http://localhost:8080/api/Controller?ACTION=ORDER.FIND_ALL&restaurant_id=${restaurantId}`;
     
     fetch(apiUrl)
         .then(response => {
