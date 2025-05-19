@@ -52,7 +52,7 @@ async function getListProducts() {
             grid.innerHTML = '<div class="loading">Loading products...</div>';
         });
         
-        const response = await fetch('http://localhost:8080/CrazyCow_Server/Controller?ACTION=PRODUCT.FIND_ALL');
+        const response = await fetch('http://localhost:8080/api/Controller?ACTION=PRODUCT.FIND_ALL');
         const data = await response.json();
         
         
