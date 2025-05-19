@@ -1,5 +1,6 @@
  # CrazyCow 🍔
-Proyecto de primer curso de Desarrollo de Aplicaciones Web Desarrollado por: Clara y Ana
+Proyecto de primer curso de Desarrollo de Aplicaciones Web Desarrollado por: Clara y Ana 
+URL lanzada con AWS: crazycow.retocsv.es/html
 
  # Descripción 📜
 CrazyCow es la propuesta de una hamburguesería moderna y vibrante, diseñada como parte del proyecto académico. Este repositorio contiene exclusivamente la parte front-end, construida con HTML, CSS y JavaScript, ofreciendo una experiencia visual atractiva e interactiva para los usuarios.
