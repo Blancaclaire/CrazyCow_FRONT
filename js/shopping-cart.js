@@ -1,5 +1,5 @@
 // Configuración base
-const API_BASE_URL = 'http://localhost:8080/CrazyCow_Server/Controller';
+const API_BASE_URL = 'http://localhost:8080/api/Controller';
 
 // Mapeo de categorías
 const CATEGORY_MAP = {
