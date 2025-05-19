@@ -11,6 +11,28 @@ Interactividad con JavaScript para mejorar la experiencia del usuario.
 
 Estilos modernos y animaciones en CSS.
 
+# Funcionalidades 
+
+<b>Plataforma ecomerce de venta de hamburguesas, que permite la posibilidad de hacer tanto pedidos para llevar como ventas en el restaurante
+
+Apartado Work With Us destinado a facilitar la gestion de candidatos de empleos de la empresa
+
+Area de empelado destinada a cubrir las distintas necesidades de los distintos puestos de trabajo de la empresa</b>
+
+   -Servicio de cocina: Disponen de un botón que permite la visualizacion de los pedidos que se hacen en la página, asociados al restaurante del empleado
+   
+   -Recursos humanos: Disponen de un botón que permite la visualización de los perfiles de los candidatos, enlazado a sus correspondientes curriculums, fecha de inscripción y puesto solicitado
+   
+   -Departamento de IT: Disponen de un botón que les permite gestionar los productos de la página de manera sencilla e intuitiva. Este apartado permite subir nuevos productos, actualizarlos y borrarlos.
+
+Para poder acceder a estas funcionalidades se debe loguear un empleado con las credenciales necesarias para ello. A continuacion te dejo un ejemplo de credenciales para que puedas comprobarlo tu mismo:
+
+   -Servicio de cocina: Username: emily.smith@restaurant.com Password: chefpass
+   
+   -Recursos humanos: Username: sofia.ramirez@restaurant.com Password: cookpass
+   
+   -Departamento de IT: Username: clara.alonso.jimenez@gmail.com Password : 12345
+
 # Tecnologías utilizadas 🛠️
 HTML5 → Estructura de la web.
 
