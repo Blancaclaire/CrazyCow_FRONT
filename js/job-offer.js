@@ -1,5 +1,5 @@
 // URL base del servidor
-        const BASE_URL = 'http://localhost:8080/CrazyCow_Server/Controller';
+        const BASE_URL = 'http://localhost:8080/api/Controller';
         
         // Función para cargar todas las ofertas
         function loadAllOffers() {
