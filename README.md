@@ -13,15 +13,15 @@ Estilos modernos y animaciones en CSS.
 
 # Funcionalidades 
 
-<b>Plataforma ecomerce de venta de hamburguesas, que permite la posibilidad de hacer tanto pedidos para llevar como ventas en el restaurante
+<b>Plataforma ecommerce de venta de hamburguesas, que permite la posibilidad de hacer tanto pedidos para llevar como ventas en el restaurante
 
 Apartado Work With Us destinado a facilitar la gestion de candidatos de empleos de la empresa
 
-Area de empelado destinada a cubrir las distintas necesidades de los distintos puestos de trabajo de la empresa</b>
+Area de empleado destinada a cubrir las distintas necesidades de los distintos puestos de trabajo de la empresa</b>
 
-   -Servicio de cocina: Disponen de un botón que permite la visualizacion de los pedidos que se hacen en la página, asociados al restaurante del empleado
+   -Servicio de cocina: Disponen de un botón que permite la visualización de los pedidos que se hacen en la página, asociados al restaurante del empleado
    
-   -Recursos humanos: Disponen de un botón que permite la visualización de los perfiles de los candidatos, enlazado a sus correspondientes curriculums, fecha de inscripción y puesto solicitado
+   -Recursos humanos: Disponen de un botón que permite la visualización de los perfiles de los candidatos, enlazado a sus correspondientes currículums, fecha de inscripción y puesto solicitado
    
    -Departamento de IT: Disponen de un botón que les permite gestionar los productos de la página de manera sencilla e intuitiva. Este apartado permite subir nuevos productos, actualizarlos y borrarlos.
 
