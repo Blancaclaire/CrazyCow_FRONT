@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (productId) {
             try {
                 // Construir URL para obtener detalles del producto
-                let url = new URL("http://localhost:8080//api/Controller?ACTION=PRODUCT.FIND_BY_ID", window.location.origin);
+                let url = new URL("http://localhost:8080/api/Controller?ACTION=PRODUCT.FIND_BY_ID", window.location.origin);
                 url.searchParams.append("product_id", productId);
 
                 // Realizar petición al servidor
